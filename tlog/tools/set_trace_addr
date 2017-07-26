@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 1 ] ; then
+	echo "Usage: $0 <iplast>"
+	exit 1
+fi
+
+./ctrl_tlog -s seer -c set_trace_addr -i 10.1.1.$1 -p 27182

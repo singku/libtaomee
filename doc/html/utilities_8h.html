@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/project/utilities.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/project/utilities.h文件参考</h1>淘米项目公共小函数。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+utilities.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="utilities_8h__incl.png" border="0" usemap="#libtaomee/project/utilities.h_map" alt=""></center>
+<map name="libtaomee/project/utilities.h_map">
+<area shape="rect" href="constants_8h.html" title="定义淘米项目公共常量。" alt="" coords="5,80,93,107"><area shape="rect" href="types_8h.html" title="定义淘米项目公共类型。" alt="" coords="117,80,181,107"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#16317176c284b58ba7b29af60fc774d1">is_guest_id</a> (<a class="el" href="types_8h.html#ca3a0c1172c6aeffeca94922baa758e4">userid_t</a> uid)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">check if the given id is a guest id  <a href="#16317176c284b58ba7b29af60fc774d1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="utilities_8h.html#52517c0fa35866498ae25ac7c91bc5f4">is_valid_uid</a> (<a class="el" href="types_8h.html#ca3a0c1172c6aeffeca94922baa758e4">userid_t</a> uid)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">check if the given 'uid' is a valid user id  <a href="#52517c0fa35866498ae25ac7c91bc5f4"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+淘米项目公共小函数。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="16317176c284b58ba7b29af60fc774d1"></a><!-- doxytag: member="utilities.h::is_guest_id" ref="16317176c284b58ba7b29af60fc774d1" args="(userid_t uid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int is_guest_id           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ca3a0c1172c6aeffeca94922baa758e4">userid_t</a>&nbsp;</td>
+          <td class="paramname"> <em>uid</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+check if the given id is a guest id 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>uid</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>0 if uid is a valid user id, 1 if uid is a guest id </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="52517c0fa35866498ae25ac7c91bc5f4"></a><!-- doxytag: member="utilities.h::is_valid_uid" ref="52517c0fa35866498ae25ac7c91bc5f4" args="(userid_t uid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int is_valid_uid           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ca3a0c1172c6aeffeca94922baa758e4">userid_t</a>&nbsp;</td>
+          <td class="paramname"> <em>uid</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+check if the given 'uid' is a valid user id 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>uid</em>&nbsp;</td><td>user id </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>1 if uid is a valid user id, 0 otherwise </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

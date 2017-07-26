@@ -1,0 +1,172 @@
+﻿2013-05-16
+fixes:
+	1. 版本号0.7.6
+	2. 解决脏词库匿名共享内存版本的即时更新问题
+
+2012-04-12
+fixes:
+	1. 版本号0.7.5
+	2. TLOG支持KEYLOG
+	3. tm_load_dirty()接口永远返回0，但内部不做任何事情.
+2012-03-15
+features:
+	1. 增加TLOG
+	2. 增加attr_api
+	3. 增加脏词的shm attach功能
+	4. 增加配置文件的动态加载接口和dump接口
+	5. 增加shm中xml文件的init和attach等接口
+	6. 修正版本号到0.7.4
+2011-12-16
+features:
+	1.inet/inet_utils.c增加两个接口is_legal_ip(),is_legal_port(),判定给定的ipv4地址和端口是否合法.
+fixes:
+	1.统一脏词库的错误日志格式
+	2.不再提供默认的脏词服务器地址，需要在bench.conf里强制配置
+	3.调整脏词服务器地址的地址顺序，将外网地址置前。(ver:0.7.3)
+	
+2011-12-07
+features:
+	1.增加了lua配置，使得配置文件的识别自动化.
+fixes:
+	1.修正了tm_dirty.c的脏词初次加载逻辑，当脏词文件存在，又能初次连接服务器，而连接被中途断开的时候，原来直接返回-1，没有判断脏词文件的存在性，使得有脏词文件，却初次加载失败。现在返回-1后，判断了脏词文件的存在性。
+	2.修正了tm_dirty/acsm.c的acsmAddPattern函数，判断了pattern被过滤后是否为0长度.(ver:0.7.2)
+	
+2011-11-08
+features:
+	1.增加脏词检测通过后递交给广告检测的逻辑。UDP方式发送。业务逻辑需要调用init_ads_report_udp_socket初始化，并调用send_udp_ads_report_to_db将检测通过的消息发送到广告检测服务器.初始化需要ip和端口，发送时需要消息的详细信息:包括gameid，userid,recvid,onlineid消息的timestamp,msglen，以及msg本身。详见tm_dirty.h.(ver:	0.7.1)
+
+2011-11-04
+features:
+	1. 修改脏词库算法（AC多模式匹配）
+	2. 增加脏词库在线更新逻辑，详见tm_dirty下的readme文件. (ver:	0.7.0)
+
+2011-11-03
+fixes:
+  1. 修正 log.c 中的 write_log 接口的接受大数据量(超过8KB)时, 会导致 write 系统调用对 log_buffer 产生读越界的bug; (ver: 0.6.9)
+
+2011-09-20
+fixes:
+  1. 脏词库bug，如果字符串中有任何的字符导致 iconv 转换 utf-8 到 GBK 失败，则检测不出脏词，现在修改为如果转换失败，直接判定为敏感词。
+
+2011-07-13
+features:
+  1. 新增create_mcast_socket（libtaomee/inet/mcast.h），用于创建组播socket。
+
+2011-07-12
+features:
+  1. 新增get_ip_addr（libtaomee/inet/inet_utils.h），用于通过网卡接口（eth0/eth1/lo...）获取对应的IP地址。
+     支持IPv4和IPv6。
+
+2011-07-07
+features:
+  1. 新增create_passive_endpoint（libtaomee/inet/tcp.c），可创建TCP listen fd和UDP fd，
+     用于接收客户端数据。支持IPv4和IPv6。
+
+2011-04-14
+features:
+  1. tcp.h: 给safe_socket_listen增加了两个参数，用于设置半连接队列大小和socket缓冲区大小
+
+2011-04-08
+features:
+  1. log.h：接受tonyliu的建议，增加了关闭日志功能的log_fini函数
+
+2011-04-07
+features:
+  1. log.h：接受ian的建议http://10.1.1.5/bbs/viewthread.php?tid=54&extra=page%3D1
+  2. utils.h：新增libtaomee_get_version接口，用于获取libtaomee的版本号
+
+2011-03-24
+features:
+  1. log.h：log_init中不再调用BOOT_LOG输出日志初始化信息，由调用者负责输出信息；
+            失败不再退出程序，改成返回-1。
+
+2010-12-22
+features:
+  1. 修正了log.h死循环的缺陷
+  2. 加入了日志按时间分文件的功能
+  3. 定时器timer.h支持通过数组设置，重新配置
+
+2009-12-24
+feature:
+  1. 修正了log.h多线程写日志会写串的bug
+
+2009-11-26
+feature:
+  1. tcp.h中加入了set_sock_snd_timeo和set_sock_rcv_timeo
+  2. 加入了ipaddr_cat.h，里面有一些判断ip地址类型的函数
+
+2009-11-16
+feature:
+  1. 加入了用于写入统计信息的msglog.h
+
+2009-11-13
+fixes:
+  1. 修正了log.c会core掉的bug
+
+2009-11-03
+feature:
+  1. 增加了void hex2str_s(const void* srchex, size_t srclen, void* deststring, const void* seperator)
+
+2009-09-29
+feature:
+  1. 新增了shmq.h，里面定义了一个环形的共享内存队列，目前只适用于一个进程只读，另外一个进程只写的应用。
+
+2009-08-13
+feature:
+  1. log.h支持多线程写日志，只需要调用一下enable_multi_thread()即可。
+
+2009-04-01
+fix:
+  1. 修正了config.h不能读取不是以'\n'字符结束的文件的bug
+
+2009-03-11
+feature:
+  1. 新增了/project/constants.h、/project/types.h和/project/utilities.h，里面定义了淘米项目的一些公共常量、类型和工具函数。
+
+2009-02-17
+fix:
+  1. 修正了config.h读取汉字的bug。
+
+2009-02-05
+feature:
+  1. 修改了log.h，新增函数set_log_dest用户运行时动态控制日志是输出到屏幕、文件，还是都输出。
+fix:
+  1. 修正了log.h的一个小bug。
+
+2009-02-04
+feature:
+  1. 加入了mcast.h，方便处理多播。
+  2. 修改了log.h，可以通过编译时定义宏LOG_USE_SYSLOG来转而利用syslog记录日志。
+
+2009-01-21
+fix:
+  1. 修正了bin_str.h的一个小bug。
+
+2009-01-20
+feature:
+  1. 加入了random.h，用于产生随机数。
+
+2009-01-07
+feature:
+  1. 加入了filelock.h，用于操作文件锁。
+
+2009-01-04
+feature:
+  1. 加入了config.h，用于读取配置文件。
+
+2008-12-31
+fixes:
+  1. 修正了safe_tcp_connect的一个小bug。
+
+2008-12-22
+feature:
+  1. 加入了bin_str.h，用户字符串和数值之间的转换。
+
+2008-12-09
+feature:
+  1. 将qdes.c修改成可以加密8字节的倍数的数据。
+  2. 给log.h和qdes.h加上了注释。
+
+2008-12-08
+feature:
+  1. 将log.c修改成可以自动轮转。

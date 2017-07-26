@@ -1,0 +1,543 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/atomic.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/atomic.h文件参考</h1>从内核代码里抽取出来的整型原子操作函数/宏。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+此图展示直接或间接包含该文件的文件：</div>
+<div class="dynsection">
+<p><center><img src="atomic_8h__dep__incl.png" border="0" usemap="#libtaomee/atomic.hdep_map" alt=""></center>
+<map name="libtaomee/atomic.hdep_map">
+<area shape="rect" href="shmq_8h.html" title="共享内存队列。目前的shm_cq只适用于一个进程只读，另外一个进程只写的应�..." alt="" coords="5,80,205,107"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>组合类型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structatomic__t.html">atomic_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This struct makes sure gcc doesn't try to be clever and move things around on us. We need to use _exactly_ the address the user gave us, not some alias that contains the same information.  <a href="structatomic__t.html#_details">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>宏定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#1414350b98d3d1dc33887f9da5878542">atomic_read</a>(v)&nbsp;&nbsp;&nbsp;((v)-&gt;counter)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read atomic variable. Atomically reads the value of v.  <a href="#1414350b98d3d1dc33887f9da5878542"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#f7cad706a5bba06487b2011794061922">atomic_set</a>(v, i)&nbsp;&nbsp;&nbsp;(((v)-&gt;counter) = (i))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set atomic variable. Atomically sets the value of v to i.  <a href="#f7cad706a5bba06487b2011794061922"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#9a5d8951b9c8bae6c060b2bf41a76d03">atomic_inc_return</a>(v)&nbsp;&nbsp;&nbsp;(atomic_add_return(1,v))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Increment and return  <a href="#9a5d8951b9c8bae6c060b2bf41a76d03"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#aea8262792e217f9d545777bd1f466f1">atomic_dec_return</a>(v)&nbsp;&nbsp;&nbsp;(atomic_sub_return(1,v))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Decrement and return  <a href="#aea8262792e217f9d545777bd1f466f1"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#7abb2a98ebfd289ae30ea2e013219d49">atomic_add</a> (int i, <a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add integer to atomic variable. Atomically adds i to v.  <a href="#7abb2a98ebfd289ae30ea2e013219d49"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#84fc94018cf738df7c0e62747d99cb5a">atomic_sub</a> (int i, <a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Subtract the atomic variable. Atomically subtracts i from v.  <a href="#84fc94018cf738df7c0e62747d99cb5a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#80a3daad64ad057b95fdc1e0f3ad3232">atomic_sub_and_test</a> (int i, <a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Subtract value from variable and test result<br>
+ Atomically subtracts i from v and returns true if the result is zero, or false for all other cases.  <a href="#80a3daad64ad057b95fdc1e0f3ad3232"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#8fc6b0729a9de37de8f4ec8792fc84fe">atomic_inc</a> (<a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Increment atomic variable. Atomically increments v by 1.  <a href="#8fc6b0729a9de37de8f4ec8792fc84fe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#0423d42645a2cd4390c64f537499c786">atomic_dec</a> (<a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Decrement atomic variable. Atomically decrements v by 1.  <a href="#0423d42645a2cd4390c64f537499c786"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#9911d165f831a1467c6feb92e94803ce">atomic_dec_and_test</a> (<a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Decrement and test.<br>
+ Atomically decrements v by 1 and returns true if the result is 0, or false for all other cases.  <a href="#9911d165f831a1467c6feb92e94803ce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#09c0cb23a1c79d0385c147d4ae65854a">atomic_inc_and_test</a> (<a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Increment and test.<br>
+ Atomically increments v by 1 and returns true if the result is zero, or false for all other cases.  <a href="#09c0cb23a1c79d0385c147d4ae65854a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#5920f7b99048501fc09ace54cfff56da">atomic_add_negative</a> (int i, <a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add and test if negative.<br>
+ Atomically adds i to v and returns true if the result is negative, or false when result is greater than or equal to zero.  <a href="#5920f7b99048501fc09ace54cfff56da"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#212b07d03c1ffb219e12107f09f6453a">atomic_add_return</a> (int i, <a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add and return. Atomically adds i to v and returns i + v  <a href="#212b07d03c1ffb219e12107f09f6453a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static __inline__ int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="atomic_8h.html#3773f91d8c52ec9675faab41e2f5ed66">atomic_sub_return</a> (int i, <a class="el" href="structatomic__t.html">atomic_t</a> *v)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Subtract and return. Atomically subtracts i from v and returns i - v  <a href="#3773f91d8c52ec9675faab41e2f5ed66"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+从内核代码里抽取出来的整型原子操作函数/宏。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>宏定义文档</h2>
+<a class="anchor" name="aea8262792e217f9d545777bd1f466f1"></a><!-- doxytag: member="atomic.h::atomic_dec_return" ref="aea8262792e217f9d545777bd1f466f1" args="(v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_dec_return          </td>
+          <td>(</td>
+          <td class="paramtype">v&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(atomic_sub_return(1,v))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Decrement and return 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="9a5d8951b9c8bae6c060b2bf41a76d03"></a><!-- doxytag: member="atomic.h::atomic_inc_return" ref="9a5d8951b9c8bae6c060b2bf41a76d03" args="(v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_inc_return          </td>
+          <td>(</td>
+          <td class="paramtype">v&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(atomic_add_return(1,v))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Increment and return 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1414350b98d3d1dc33887f9da5878542"></a><!-- doxytag: member="atomic.h::atomic_read" ref="1414350b98d3d1dc33887f9da5878542" args="(v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_read          </td>
+          <td>(</td>
+          <td class="paramtype">v&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((v)-&gt;counter)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Read atomic variable. Atomically reads the value of v. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f7cad706a5bba06487b2011794061922"></a><!-- doxytag: member="atomic.h::atomic_set" ref="f7cad706a5bba06487b2011794061922" args="(v, i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_set          </td>
+          <td>(</td>
+          <td class="paramtype">v,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">i&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(((v)-&gt;counter) = (i))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set atomic variable. Atomically sets the value of v to i. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>required value </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>函数文档</h2>
+<a class="anchor" name="7abb2a98ebfd289ae30ea2e013219d49"></a><!-- doxytag: member="atomic.h::atomic_add" ref="7abb2a98ebfd289ae30ea2e013219d49" args="(int i, atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ void atomic_add           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Add integer to atomic variable. Atomically adds i to v. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>integer value to add </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="5920f7b99048501fc09ace54cfff56da"></a><!-- doxytag: member="atomic.h::atomic_add_negative" ref="5920f7b99048501fc09ace54cfff56da" args="(int i, atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ int atomic_add_negative           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Add and test if negative.<br>
+ Atomically adds i to v and returns true if the result is negative, or false when result is greater than or equal to zero. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>integer value to add </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="212b07d03c1ffb219e12107f09f6453a"></a><!-- doxytag: member="atomic.h::atomic_add_return" ref="212b07d03c1ffb219e12107f09f6453a" args="(int i, atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ int atomic_add_return           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Add and return. Atomically adds i to v and returns i + v 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>integer value to add </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="0423d42645a2cd4390c64f537499c786"></a><!-- doxytag: member="atomic.h::atomic_dec" ref="0423d42645a2cd4390c64f537499c786" args="(atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ void atomic_dec           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Decrement atomic variable. Atomically decrements v by 1. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="9911d165f831a1467c6feb92e94803ce"></a><!-- doxytag: member="atomic.h::atomic_dec_and_test" ref="9911d165f831a1467c6feb92e94803ce" args="(atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ int atomic_dec_and_test           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Decrement and test.<br>
+ Atomically decrements v by 1 and returns true if the result is 0, or false for all other cases. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8fc6b0729a9de37de8f4ec8792fc84fe"></a><!-- doxytag: member="atomic.h::atomic_inc" ref="8fc6b0729a9de37de8f4ec8792fc84fe" args="(atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ void atomic_inc           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Increment atomic variable. Atomically increments v by 1. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="09c0cb23a1c79d0385c147d4ae65854a"></a><!-- doxytag: member="atomic.h::atomic_inc_and_test" ref="09c0cb23a1c79d0385c147d4ae65854a" args="(atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ int atomic_inc_and_test           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Increment and test.<br>
+ Atomically increments v by 1 and returns true if the result is zero, or false for all other cases. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="84fc94018cf738df7c0e62747d99cb5a"></a><!-- doxytag: member="atomic.h::atomic_sub" ref="84fc94018cf738df7c0e62747d99cb5a" args="(int i, atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ void atomic_sub           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Subtract the atomic variable. Atomically subtracts i from v. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>integer value to subtract </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="80a3daad64ad057b95fdc1e0f3ad3232"></a><!-- doxytag: member="atomic.h::atomic_sub_and_test" ref="80a3daad64ad057b95fdc1e0f3ad3232" args="(int i, atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ int atomic_sub_and_test           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Subtract value from variable and test result<br>
+ Atomically subtracts i from v and returns true if the result is zero, or false for all other cases. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>integer value to subtract </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="3773f91d8c52ec9675faab41e2f5ed66"></a><!-- doxytag: member="atomic.h::atomic_sub_return" ref="3773f91d8c52ec9675faab41e2f5ed66" args="(int i, atomic_t *v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static __inline__ int atomic_sub_return           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structatomic__t.html">atomic_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Subtract and return. Atomically subtracts i from v and returns i - v 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>integer value to add </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>pointer of type <a class="el" href="structatomic__t.html" title="This struct makes sure gcc doesn&#39;t try to be clever and move things around on...">atomic_t</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:51 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

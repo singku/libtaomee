@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 1 ] ; then
+	echo "Usage: $0 <rate(B/s)>"
+	exit 1
+fi
+
+./ctrl_tlog -s seer -c set_rate_limit -r $1

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/crypt/qdes.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/crypt/qdes.h文件参考</h1>DES ECB加密 <a href="#_details">更多...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="qdes_8h.html#fb838dbd3889e1db05e4bb7292aecf80">des_encrypt</a> (const void *key, const void *s_text, void *d_text)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DES ECB加密。只能加密大小为8字节的数据。  <a href="#fb838dbd3889e1db05e4bb7292aecf80"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="qdes_8h.html#4be6d5254e13acbe605369d531952b8d">des_decrypt</a> (const void *key, const void *s_text, void *d_text)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DES ECB解密。只能解密大小为8字节的数据。  <a href="#4be6d5254e13acbe605369d531952b8d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="qdes_8h.html#e9ef2f3422fe8b7f4aa732976628b80b">des_encrypt_n</a> (const void *key, const void *s_text, void *d_text, int n)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DES ECB加密。可以加密大小为8字节的倍数的数据。  <a href="#e9ef2f3422fe8b7f4aa732976628b80b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="qdes_8h.html#44c88839c749d0eb4ec5626e45e3059e">des_decrypt_n</a> (const void *key, const void *s_text, void *d_text, int n)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DES ECB解密。可以解密大小为8字节的倍数的数据。  <a href="#44c88839c749d0eb4ec5626e45e3059e"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+DES ECB加密 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="4be6d5254e13acbe605369d531952b8d"></a><!-- doxytag: member="qdes.h::des_decrypt" ref="4be6d5254e13acbe605369d531952b8d" args="(const void *key, const void *s_text, void *d_text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void des_decrypt           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>s_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>d_text</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+DES ECB解密。只能解密大小为8字节的数据。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* key, 解密用的密钥，和加密用的密钥相同。key指向的内存必须&gt;=8个字节，并且只有前8个字节有效。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* s_text, 需要解密的数据。s_text指向的内存必须&gt;=8个字节，并且只有前8个字节被解密。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>void*</em>&nbsp;</td><td>d_text, 解密后的明文(8个字节)会存放到d_text里。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="44c88839c749d0eb4ec5626e45e3059e"></a><!-- doxytag: member="qdes.h::des_decrypt_n" ref="44c88839c749d0eb4ec5626e45e3059e" args="(const void *key, const void *s_text, void *d_text, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void des_decrypt_n           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>s_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>d_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+DES ECB解密。可以解密大小为8字节的倍数的数据。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* key, 解密用的密钥，和加密用的密钥相同。key指向的内存必须&gt;=8个字节，并且只有前8个字节有效。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* s_text, 需要解密的数据。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>void*</em>&nbsp;</td><td>d_text, 解密后的明文会存放到d_text里。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>n, 表示s_text和d_text指向的内存大小为8字节的n倍。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="fb838dbd3889e1db05e4bb7292aecf80"></a><!-- doxytag: member="qdes.h::des_encrypt" ref="fb838dbd3889e1db05e4bb7292aecf80" args="(const void *key, const void *s_text, void *d_text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void des_encrypt           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>s_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>d_text</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+DES ECB加密。只能加密大小为8字节的数据。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* key, 加密用的密钥。key指向的内存必须&gt;=8个字节，并且只有前8个字节有效。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* s_text, 需要加密的数据。s_text指向的内存必须&gt;=8个字节，并且只有前8个字节被加密。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>void*</em>&nbsp;</td><td>d_text, 加密后的密文(8个字节)会存放到d_text里。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="e9ef2f3422fe8b7f4aa732976628b80b"></a><!-- doxytag: member="qdes.h::des_encrypt_n" ref="e9ef2f3422fe8b7f4aa732976628b80b" args="(const void *key, const void *s_text, void *d_text, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void des_encrypt_n           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>s_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>d_text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+DES ECB加密。可以加密大小为8字节的倍数的数据。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* key, 加密用的密钥。key指向的内存必须&gt;=8个字节，并且只有前8个字节有效。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* s_text, 需要加密的数据。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>void*</em>&nbsp;</td><td>d_text, 加密后的密文会存放到d_text里。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>n, 表示s_text和d_text指向的内存大小为8字节的n倍。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

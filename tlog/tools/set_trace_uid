@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -ne 2 ] ; then
+	echo "Usage: $0 <uid> <lifetime>"
+	exit 1
+fi
+uid="$1"
+lifetime="$2"
+
+./ctrl_tlog -s seer -c set_trace_uid -u $uid -l $lifetime

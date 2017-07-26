@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/interprocess/shmq.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/interprocess/shmq.h文件参考</h1>共享内存队列。目前的shm_cq只适用于一个进程只读，另外一个进程只写的应用。<br>
+ 具体例子请参见/samples/shmq/ <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+shmq.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="shmq_8h__incl.png" border="0" usemap="#libtaomee/interprocess/shmq.h_map" alt=""></center>
+<map name="libtaomee/interprocess/shmq.h_map">
+<area shape="rect" href="atomic_8h.html" title="从内核代码里抽取出来的整型原子操作函数/宏。" alt="" coords="101,80,232,107"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>组合类型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structshm__cq.html">shm_cq</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">环形队列（Circular Queue）头节点  <a href="structshm__cq.html#_details">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>类型定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a862f62dc3c302aac287dbddaa715bba"></a><!-- doxytag: member="shmq.h::shm_cq_t" ref="a862f62dc3c302aac287dbddaa715bba" args="" -->
+typedef struct <a class="el" href="structshm__cq.html">shm_cq</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#a862f62dc3c302aac287dbddaa715bba">shm_cq_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">typedef of <a class="el" href="structshm__cq.html" title="环形队列（Circular Queue）头节点">shm_cq</a> <br></td></tr>
+<tr><td colspan="2"><br><h2>枚举</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#81cddec4d5aec5da3475cbf9edc95a03">shmq_const</a> { <a class="el" href="shmq_8h.html#81cddec4d5aec5da3475cbf9edc95a03f135c082e3f1980219d30ab46be47c58">shmq_name_sz</a> =  65
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">共享内存队列常量定义  <a href="shmq_8h.html#81cddec4d5aec5da3475cbf9edc95a03">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structshm__cq.html">shm_cq_t</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#04cd8a6e606fe197b5ff48ccf89a227b">shm_cq_create</a> (const char *name, uint32_t cq_size, uint32_t data_max_sz)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">分配一片共享内存，并以此为基础创建一条队列  <a href="#04cd8a6e606fe197b5ff48ccf89a227b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#b0696ef832c5507ee9c6d54356ba55e0">shm_cq_destroy</a> (<a class="el" href="structshm__cq.html">shm_cq_t</a> *cq)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">销毁共享内存队列  <a href="#b0696ef832c5507ee9c6d54356ba55e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structshm__cq.html">shm_cq_t</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#134a6524f563a4c67049a1e0ab536a5f">shm_cq_attach</a> (const char *name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">依附到一条已经创建好了的共享内存队列  <a href="#134a6524f563a4c67049a1e0ab536a5f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#88c5c1b2151fa5ec83e0531a2dcaba0d">shm_cq_detach</a> (<a class="el" href="structshm__cq.html">shm_cq_t</a> *cq)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">取消对队列cq的依附关系。shm_cq_destroy后，还要等所有其它进程都shm_cq_detach后，cq指向的内存才真正被释放。  <a href="#88c5c1b2151fa5ec83e0531a2dcaba0d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#7235cf452fdb3c72694f74c12f56f936">shm_cq_pop</a> (<a class="el" href="structshm__cq.html">shm_cq_t</a> *q, void **data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">从队列头中返回数据给data，并且移除该队头  <a href="#7235cf452fdb3c72694f74c12f56f936"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="shmq_8h.html#cfd0f609cc771f68abc47230368a4c16">shm_cq_push</a> (<a class="el" href="structshm__cq.html">shm_cq_t</a> *q, const void *data, uint32_t len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">往队尾插入长度为len的数据data  <a href="#cfd0f609cc771f68abc47230368a4c16"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+共享内存队列。目前的shm_cq只适用于一个进程只读，另外一个进程只写的应用。<br>
+ 具体例子请参见/samples/shmq/ 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>枚举类型文档</h2>
+<a class="anchor" name="81cddec4d5aec5da3475cbf9edc95a03"></a><!-- doxytag: member="shmq.h::shmq_const" ref="81cddec4d5aec5da3475cbf9edc95a03" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="shmq_8h.html#81cddec4d5aec5da3475cbf9edc95a03">shmq_const</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+共享内存队列常量定义 
+<p>
+<dl compact><dt><b>枚举值: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="81cddec4d5aec5da3475cbf9edc95a03f135c082e3f1980219d30ab46be47c58"></a><!-- doxytag: member="shmq_name_sz" ref="81cddec4d5aec5da3475cbf9edc95a03f135c082e3f1980219d30ab46be47c58" args="" -->shmq_name_sz</em>&nbsp;</td><td>
+65：共享内存名字最大长度，包括0字符 </td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>函数文档</h2>
+<a class="anchor" name="134a6524f563a4c67049a1e0ab536a5f"></a><!-- doxytag: member="shmq.h::shm_cq_attach" ref="134a6524f563a4c67049a1e0ab536a5f" args="(const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structshm__cq.html">shm_cq_t</a>* shm_cq_attach           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+依附到一条已经创建好了的共享内存队列 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>想要依附到的共享内存名字 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>成功则返回共享内存队列的指针，失败则返回0 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="shmq_8h.html#04cd8a6e606fe197b5ff48ccf89a227b" title="分配一片共享内存，并以此为基础创建一条队列">shm_cq_create</a>, <a class="el" href="shmq_8h.html#88c5c1b2151fa5ec83e0531a2dcaba0d" title="取消对队列cq的依附关系。shm_cq_destroy后，还要等所有其它进程都shm_cq_detach�...">shm_cq_detach</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="04cd8a6e606fe197b5ff48ccf89a227b"></a><!-- doxytag: member="shmq.h::shm_cq_create" ref="04cd8a6e606fe197b5ff48ccf89a227b" args="(const char *name, uint32_t cq_size, uint32_t data_max_sz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structshm__cq.html">shm_cq_t</a>* shm_cq_create           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>cq_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>data_max_sz</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+分配一片共享内存，并以此为基础创建一条队列 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>共享内存名字，长度不能超过64个字节，否则不能创建队列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>cq_size</em>&nbsp;</td><td>队列大小，必须比data_max_sz大60个字节 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data_max_sz</em>&nbsp;</td><td>插入队列的数据最大不能超过data_max_sz </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>成功则返回共享内存队列的指针，失败则返回0 </dd></dl>
+<dl class="note" compact><dt><b>注解:</b></dt><dd>非线程安全，也非进程安全 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="shmq_8h.html#b0696ef832c5507ee9c6d54356ba55e0" title="销毁共享内存队列">shm_cq_destroy</a>, <a class="el" href="shmq_8h.html#134a6524f563a4c67049a1e0ab536a5f" title="依附到一条已经创建好了的共享内存队列">shm_cq_attach</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="b0696ef832c5507ee9c6d54356ba55e0"></a><!-- doxytag: member="shmq.h::shm_cq_destroy" ref="b0696ef832c5507ee9c6d54356ba55e0" args="(shm_cq_t *cq)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int shm_cq_destroy           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structshm__cq.html">shm_cq_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>cq</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+销毁共享内存队列 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cq</em>&nbsp;</td><td>需要销毁的队列 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>0成功，-1失败 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="shmq_8h.html#04cd8a6e606fe197b5ff48ccf89a227b" title="分配一片共享内存，并以此为基础创建一条队列">shm_cq_create</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="88c5c1b2151fa5ec83e0531a2dcaba0d"></a><!-- doxytag: member="shmq.h::shm_cq_detach" ref="88c5c1b2151fa5ec83e0531a2dcaba0d" args="(shm_cq_t *cq)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int shm_cq_detach           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structshm__cq.html">shm_cq_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>cq</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+取消对队列cq的依附关系。shm_cq_destroy后，还要等所有其它进程都shm_cq_detach后，cq指向的内存才真正被释放。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cq</em>&nbsp;</td><td>共享内存队列 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>成功返回0，失败返回-1 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="shmq_8h.html#134a6524f563a4c67049a1e0ab536a5f" title="依附到一条已经创建好了的共享内存队列">shm_cq_attach</a>, <a class="el" href="shmq_8h.html#b0696ef832c5507ee9c6d54356ba55e0" title="销毁共享内存队列">shm_cq_destroy</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="7235cf452fdb3c72694f74c12f56f936"></a><!-- doxytag: member="shmq.h::shm_cq_pop" ref="7235cf452fdb3c72694f74c12f56f936" args="(shm_cq_t *q, void **data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t shm_cq_pop           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structshm__cq.html">shm_cq_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+从队列头中返回数据给data，并且移除该队头 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>q</em>&nbsp;</td><td>共享内存队列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>出列成功后，*data中得到指向该队头的指针 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>成功则返回得到的数据的长度；如果队列为空，则返回0 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="shmq_8h.html#cfd0f609cc771f68abc47230368a4c16" title="往队尾插入长度为len的数据data">shm_cq_push</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="cfd0f609cc771f68abc47230368a4c16"></a><!-- doxytag: member="shmq.h::shm_cq_push" ref="cfd0f609cc771f68abc47230368a4c16" args="(shm_cq_t *q, const void *data, uint32_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int shm_cq_push           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structshm__cq.html">shm_cq_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+往队尾插入长度为len的数据data 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>q</em>&nbsp;</td><td>共享内存队列 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>插入到队尾的数据 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>data的长度 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>成功返回0，失败（队列满了）返回-1 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="shmq_8h.html#7235cf452fdb3c72694f74c12f56f936" title="从队列头中返回数据给data，并且移除该队头">shm_cq_pop</a> </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

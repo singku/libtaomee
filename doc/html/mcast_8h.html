@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/inet/mcast.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/inet/mcast.h文件参考</h1>多播（组播）相关函数。为了更好地理解和使用这些函数，建议认真阅读一下APUE2第21章 - Multicasting。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+mcast.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="mcast_8h__incl.png" border="0" usemap="#libtaomee/inet/mcast.h_map" alt=""></center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#602cb3c3e5d2c2def7fcb06fd404a392">mcast_join</a> (int sockfd, const struct sockaddr *grp, socklen_t grplen, const char *ifname)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">加入一个多播组。  <a href="#602cb3c3e5d2c2def7fcb06fd404a392"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#05675b779a9701b5f91cd84632db642a">mcast_leave</a> (int sockfd, const struct sockaddr *grp, socklen_t grplen, const char *ifname)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">离开一个多播组。  <a href="#05675b779a9701b5f91cd84632db642a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#543205b2f8489841c68ac7e3e7b84262">mcast_set_if</a> (int sockfd, int family, const char *ifname)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">设置组播包的网络出口。  <a href="#543205b2f8489841c68ac7e3e7b84262"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#39e49576ecd83491f136d592d896e38a">mcast_set_loop</a> (int sockfd, int family, int onoff)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">设置开启/禁止组播包的local loopback。默认是开启的。  <a href="#39e49576ecd83491f136d592d896e38a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#219fc269aba139bcde2e2c30cf715965">mcast_get_loop</a> (int sockfd, int family)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取当前local loopback的设定情况。  <a href="#219fc269aba139bcde2e2c30cf715965"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#59d254aba1b2f0f22c47e05c036fd651">mcast_set_ttl</a> (int sockfd, int family, int ttl)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">设置发送出去的多播包的ttl次数（ipv4）或者的hop次数（ipv6）。默认次数是1，即限制多播包只能在内网内传播。  <a href="#59d254aba1b2f0f22c47e05c036fd651"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcast_8h.html#a9672528bc1bb98e52f15eb588c48eae">mcast_get_ttl</a> (int sockfd, int family)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取发送出去的多播包的ttl次数（ipv4）或者的hop次数（ipv6）。  <a href="#a9672528bc1bb98e52f15eb588c48eae"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+多播（组播）相关函数。为了更好地理解和使用这些函数，建议认真阅读一下APUE2第21章 - Multicasting。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="219fc269aba139bcde2e2c30cf715965"></a><!-- doxytag: member="mcast.h::mcast_get_loop" ref="219fc269aba139bcde2e2c30cf715965" args="(int sockfd, int family)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_get_loop           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>family</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+获取当前local loopback的设定情况。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>用来发多播包的sockfd。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>family</em>&nbsp;</td><td>sockfd的address family。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="mcast_8h.html#39e49576ecd83491f136d592d896e38a" title="设置开启/禁止组播包的local loopback。默认是开启的。">mcast_set_loop</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 成功则返回当前的loopback设定，失败则返回-1。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="a9672528bc1bb98e52f15eb588c48eae"></a><!-- doxytag: member="mcast.h::mcast_get_ttl" ref="a9672528bc1bb98e52f15eb588c48eae" args="(int sockfd, int family)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_get_ttl           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>family</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+获取发送出去的多播包的ttl次数（ipv4）或者的hop次数（ipv6）。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>用来发多播包的sockfd。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>family</em>&nbsp;</td><td>sockfd的address family。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="mcast_8h.html#59d254aba1b2f0f22c47e05c036fd651" title="设置发送出去的多播包的ttl次数（ipv4）或者的hop次数（ipv6）。默认次数是1�...">mcast_set_ttl</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 成功则返回ttl/hop次数，失败则返回-1。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="602cb3c3e5d2c2def7fcb06fd404a392"></a><!-- doxytag: member="mcast.h::mcast_join" ref="602cb3c3e5d2c2def7fcb06fd404a392" args="(int sockfd, const struct sockaddr *grp, socklen_t grplen, const char *ifname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_join           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct sockaddr *&nbsp;</td>
+          <td class="paramname"> <em>grp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&nbsp;</td>
+          <td class="paramname"> <em>grplen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>ifname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+加入一个多播组。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>加入到多播组的sockfd。成功加入多播组后，应用程序可以通过这个sockfd来获取来自grp的多播包。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>grp</em>&nbsp;</td><td>想要加入的多播地址。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>grplen</em>&nbsp;</td><td>grp的大小（byte）。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ifname</em>&nbsp;</td><td>加入到多播组的网络接口，比如eth1。成功加入多播组后，内核将使用这个接口来接收来自grp的多播包。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="mcast_8h.html#05675b779a9701b5f91cd84632db642a" title="离开一个多播组。">mcast_leave</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 0 成功, -1 失败。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="05675b779a9701b5f91cd84632db642a"></a><!-- doxytag: member="mcast.h::mcast_leave" ref="05675b779a9701b5f91cd84632db642a" args="(int sockfd, const struct sockaddr *grp, socklen_t grplen, const char *ifname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_leave           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct sockaddr *&nbsp;</td>
+          <td class="paramname"> <em>grp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&nbsp;</td>
+          <td class="paramname"> <em>grplen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>ifname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+离开一个多播组。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>离开多播组的sockfd。成功离开多播组后，应用程序将不再可以通过这个sockfd来获取来自grp的多播包。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>grp</em>&nbsp;</td><td>想要离开的多播地址。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>grplen</em>&nbsp;</td><td>grp的大小（byte）。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ifname</em>&nbsp;</td><td>离开多播组的网络接口，比如eth1。成功离开多播组后，内核将不再使用这个接口来接收来自grp的多播包。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="mcast_8h.html#602cb3c3e5d2c2def7fcb06fd404a392" title="加入一个多播组。">mcast_join</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 0 成功, -1 失败。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="543205b2f8489841c68ac7e3e7b84262"></a><!-- doxytag: member="mcast.h::mcast_set_if" ref="543205b2f8489841c68ac7e3e7b84262" args="(int sockfd, int family, const char *ifname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_set_if           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>family</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>ifname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+设置组播包的网络出口。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>用来发多播包的sockfd。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>family</em>&nbsp;</td><td>sockfd的address family。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ifname</em>&nbsp;</td><td>多播包的网络出口，比如eth1。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 0 成功, -1 失败。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="39e49576ecd83491f136d592d896e38a"></a><!-- doxytag: member="mcast.h::mcast_set_loop" ref="39e49576ecd83491f136d592d896e38a" args="(int sockfd, int family, int onoff)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_set_loop           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>family</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>onoff</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+设置开启/禁止组播包的local loopback。默认是开启的。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>用来发多播包的sockfd。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>family</em>&nbsp;</td><td>sockfd的address family。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>onoff</em>&nbsp;</td><td>0禁止，1开启。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="mcast_8h.html#219fc269aba139bcde2e2c30cf715965" title="获取当前local loopback的设定情况。">mcast_get_loop</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 0 成功, -1 失败。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="59d254aba1b2f0f22c47e05c036fd651"></a><!-- doxytag: member="mcast.h::mcast_set_ttl" ref="59d254aba1b2f0f22c47e05c036fd651" args="(int sockfd, int family, int ttl)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcast_set_ttl           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>family</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>ttl</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+设置发送出去的多播包的ttl次数（ipv4）或者的hop次数（ipv6）。默认次数是1，即限制多播包只能在内网内传播。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>用来发多播包的sockfd。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>family</em>&nbsp;</td><td>sockfd的address family。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ttl</em>&nbsp;</td><td>ttl/hop次数。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="mcast_8h.html#a9672528bc1bb98e52f15eb588c48eae" title="获取发送出去的多播包的ttl次数（ipv4）或者的hop次数（ipv6）。...">mcast_get_ttl</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 0 成功，-1 失败。 </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

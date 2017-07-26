@@ -1,0 +1,86 @@
+# taomee log 库
+
+1. 在线设定任意 uid 进入调试模式, 同时打印所有log; (但最好对设定数量做个上限控制, 否则log可能太多 -- 另外, 这类log需要被标记区分)
+	通过2个接口配套实现在线调试log的效果:
+	(1) TLOG_IF(INFO, is_trace_uid(plyaer->uid)); // 其中 uid由业务提供;
+	(2) is_trace_uid(uint32_t uid); // 该接口判断业务提供的uid是否是被设定过的uid;
+	(3) 由于根据配置列表检查是否是traceuid, 所以这样的uid不能太多, 而且应该有有效期, 可以用打印次数来控制, 比如:
+	struct trace_uid_t {
+		uint32_t uid;
+		int left; // 每trace一次, 就把 left--; 当left为0时, 就把 uid 改成0;
+	}
+	
+
+2. 支持流水号 (如果业务能提供流水号, 就能还原一个用户在整个系统中的轨迹)
+
+3. 渠道号 (用来区分log的写者是业务程序, 还是vip系统, 还是客服系统, 等等)
+
+4. 是否用紧缩标记来表示各种系统参数?(渠道, 业务, 服务类型, idc类型等)
+
+5. log文件名: 修改文件名字段;
+
+6. 磁盘满会自动停止写log(如果配置了的话), 并且当磁盘被清理后, 又会自动恢复写log;
+
+6. 任何一种log写入时, 会检查所有别的lvl的log是否达到 next_flush_time, 若有就do_flush;
+
+6. 在线修改log行为:
+(1) log_level
+(2) stop / writing
+(3) 在线 trace_uid
+
+7. 监控:
+(1) 外网正式环境 "对 log_trace 的设定" 报警;
+
+
+X(没有必要引入这个抽象层) 5. 引入 sink 的概念, 日志格式 和 日志写入(sink)分开;
+struct logger_t {
+	int		status; // 0: stop-writing, 1: writing
+	uint32_t	sinks; // 0x1: file, 0x2: udp, 0x4: tcp, 0x8: stdout, 0xA: stderr, ...
+	int		timefmt;
+	char	*logdir;
+	char	*prefix;
+	uint32_t	*testuid;
+	uint32_t	trace_uid_list[MAX_TRACE_UID_NUM];
+	...
+} logger;
+
+init_logger(logger_t *logger)
+{
+	// at last, set logger to writing
+	logger->status = 1;
+}
+
+write_log(level, msg, len)
+{
+	if (unlikely(logger.status == 0)) {
+		return;
+	}
+
+	static buf[MAX];
+	formater(level, buf);
+	write_log_to_sink(level, msg, len);
+}
+
+write_log_to_sink(level, msg, len)
+{
+	if (logger.sinks & 0x1) { // file-sink
+		write_log_to_filesink(level, msg, len);
+	}
+
+	if (logger.sinks & 0x2) { // udp-sink
+		write_log_to_udpsink(level, msg, len);
+	}
+
+	// ...
+}
+
+write_log_to_filesink(level, msg, len)
+{
+	fd = get_log_file(level);
+	write(msg, len, ...);
+}
+
+write_log_to_udpsink(level, msg, len)
+{
+	if (empty(logger.testuid))
+}

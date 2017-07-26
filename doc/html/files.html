@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: 文件索引</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li class="current"><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>文件成员</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>文件列表</h1>这里列出所有文档化的文件，附带简要说明：<table>
+  <tr><td class="indexkey">libtaomee/<a class="el" href="atomic_8h.html">atomic.h</a></td><td class="indexvalue">从内核代码里抽取出来的整型原子操作函数/宏。 </td></tr>
+  <tr><td class="indexkey">libtaomee/<a class="el" href="hash__algo_8h.html">hash_algo.h</a></td><td class="indexvalue">哈希算法 </td></tr>
+  <tr><td class="indexkey">libtaomee/<a class="el" href="list_8h.html">list.h</a></td><td class="indexvalue">从内核代码里抽取出来的侵入式链表操作函数/宏。<br>
+ Simple doubly linked list implementation.<br>
+ </td></tr>
+  <tr><td class="indexkey">libtaomee/<a class="el" href="log_8h.html">log.h</a></td><td class="indexvalue">用于记录日志，一共分9种日志等级。日志文件可以自动轮转。注意：如果使用自动轮转，<br>
+ 必须保证每天写的日志文件个数不能超过log_init时设定的最大文件个数，否则日志会写乱掉。 必须先调用log_init来初始化日志功能。注意，每条日志不能超过8000字节。<br>
+ 如果编译程序时定义宏LOG_USE_SYSLOG，则会利用syslog来记录日志，使用的facility是LOG_USER。 </td></tr>
+  <tr><td class="indexkey">libtaomee/<a class="el" href="timer_8h.html">timer.h</a></td><td class="indexvalue">定时器函数，有秒级和毫秒级两种精度的接口。用于设定某一时刻调用某个函数。需要glib支持。 </td></tr>
+  <tr><td class="indexkey">libtaomee/<a class="el" href="utils_8h.html">utils.h</a></td><td class="indexvalue">一些常用的函数。 </td></tr>
+  <tr><td class="indexkey">libtaomee/bitmanip/<a class="el" href="bitmanip_8h.html">bitmanip.h</a></td><td class="indexvalue">位操作函数 </td></tr>
+  <tr><td class="indexkey">libtaomee/conf_parser/<a class="el" href="config_8h.html">config.h</a></td><td class="indexvalue">用于解析配置文件。配置文件的格式为：<br>
+ ============================================<br>
+ #key value | #号打头的行被视为注释 <br>
+ log_dir ./log <br>
+ log_size 32000000 <br>
+ ============================================ </td></tr>
+  <tr><td class="indexkey">libtaomee/crypt/<a class="el" href="qdes_8h.html">qdes.h</a></td><td class="indexvalue">DES ECB加密 </td></tr>
+  <tr><td class="indexkey">libtaomee/dataformatter/<a class="el" href="bin__str_8h.html">bin_str.h</a></td><td class="indexvalue">用于把数值转换成字符串形式，或者把字符串形式的数字转换成数值。 </td></tr>
+  <tr><td class="indexkey">libtaomee/dirtyword/<a class="el" href="dirtyword_8h.html">dirtyword.h</a></td><td class="indexvalue">该模块提供了脏词检测的接口，包括读入脏词库，创建搜索结构，以及进行脏词检测等操作。 该模块需要一个配置文件，用来指定脏词库的位置及一些内存映射文件的信息，配置文件的说明详见doc/readme.txt </td></tr>
+  <tr><td class="indexkey">libtaomee/inet/<a class="el" href="ipaddr__cat_8h.html">ipaddr_cat.h</a></td><td class="indexvalue">Ip地址分类 </td></tr>
+  <tr><td class="indexkey">libtaomee/inet/<a class="el" href="mcast_8h.html">mcast.h</a></td><td class="indexvalue">多播（组播）相关函数。为了更好地理解和使用这些函数，建议认真阅读一下APUE2第21章 - Multicasting。 </td></tr>
+  <tr><td class="indexkey">libtaomee/inet/<a class="el" href="tcp_8h.html">tcp.h</a></td><td class="indexvalue">Essential TCP socket interface </td></tr>
+  <tr><td class="indexkey">libtaomee/interprocess/<a class="el" href="filelock_8h.html">filelock.h</a></td><td class="indexvalue">用于操作文件锁。注意事项：<br>
+ 1. 关闭文件会导致该文件的所有文件锁都被解锁。假设fd1和fd2 对应的都是同一个文件，那么无论关闭了fd1或者fd2，都会导致 该文件的所有文件锁被解锁。<br>
+ 2. 子进程不能继承父进程获得的文件锁。<br>
+ 3. 通过exec来执行新的程序的话，这个新的程序可以继承原来的 程序的文件锁。但是，如果原来的文件对应的fd被设置了close-on-exec 位的话，则不能继承原来程序的文件锁。<br>
+ Advanced Programming in the UNIX Environment - 14.3. Record Locking 中有更详细的说明，建议认真阅读一下。 </td></tr>
+  <tr><td class="indexkey">libtaomee/interprocess/<a class="el" href="shmq_8h.html">shmq.h</a></td><td class="indexvalue">共享内存队列。目前的shm_cq只适用于一个进程只读，另外一个进程只写的应用。<br>
+ 具体例子请参见/samples/shmq/ </td></tr>
+  <tr><td class="indexkey">libtaomee/project/<a class="el" href="constants_8h.html">constants.h</a></td><td class="indexvalue">定义淘米项目公共常量。 </td></tr>
+  <tr><td class="indexkey">libtaomee/project/<a class="el" href="types_8h.html">types.h</a></td><td class="indexvalue">定义淘米项目公共类型。 </td></tr>
+  <tr><td class="indexkey">libtaomee/project/<a class="el" href="utilities_8h.html">utilities.h</a></td><td class="indexvalue">淘米项目公共小函数。 </td></tr>
+  <tr><td class="indexkey">libtaomee/project/stat_agent/<a class="el" href="msglog_8h.html">msglog.h</a></td><td class="indexvalue">用于写入统计信息 </td></tr>
+  <tr><td class="indexkey">libtaomee/random/<a class="el" href="random_8h.html">random.h</a></td><td class="indexvalue">用于产生随机数。 </td></tr>
+  <tr><td class="indexkey">libtaomee/time/<a class="el" href="time_8h.html">time.h</a></td><td class="indexvalue">和时间相关的函数。部分函数需要glib支持。 </td></tr>
+</table>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

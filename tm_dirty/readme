@@ -1,0 +1,60 @@
+文件列表:	utf8_punc.c utf8_punc.h
+			acsm.c acsm.h
+			tm_dirty.c tm_dirty.h
+
+功能:		实现脏词匹配多国语言版(调用tm_dirty_update_daemon负责维护脏词,调用tm_dirty_check检查).
+
+调用方式:	包含tm_dirty.h
+		单进程：
+			先调用tm_dirty_update_daemon,成功返回后表示该进程创建了一个脏词维护线程，定期更新脏词
+			别的逻辑中即可调用tm_dirty_check进行检测。
+		多进程:
+			由于匹配树采用共享内存(匿名mmap)，所以必须由父进程调用tm_dirty_update_daemon
+			子进程调用tm_dirty_check即可进行检测。注意不能单独启动一个进程调用tm_dirty_update_daemon
+			这样的话其他子进程与该进程不共享内存 会导致tm_dirty_check返回-1，
+			假如父进程要先于子进程退出，请不要调用tm_free_dirty
+
+		注意：
+			1:如果是旧的淘米库和旧的ASCYN-SERVER则无影响
+			2:如果是新的淘米库和新的ASCYN-SERVER则无影响
+			3:如果只更新淘米库，而未更新ASCYN-SERVER，则业务在调用tm_load_dirty时，
+			会因daemon_callled变量(新的taomee库中的全局变量)为0而导致tm_load_dirty失败，后续的tm_dirty_check调用也会失败
+			4:如果只更新ASCYN-SERVER,而未更新淘米库，则业务在调用tm_load_dirty时，会因daemon_called变量为1而直接返回.
+			不妨碍后续的tm_dirty_check调用。
+			5:基于3和4的原因，建议修改业务逻辑，去掉tm_load_dirty();
+		
+		调用tm_free_dirty();释放脏词结构内存.
+		调用tm_dirty_list_word(int char_set)列出内存里脏词库中的脏词.
+		调用tm_dirty_word_count返回脏词个数.
+
+编译方式:	将utf8_punc.c, acsm.c tm_dirty.c加入编译列表，库依赖：libtaomee,libssl或者libcrypto,libpthread
+		
+
+说明:	1、utf8_punc.h中定义了unicode的通用标点、亚洲地区标点、拉丁语系标点、全角字符
+		的UTF8编码表示范围(多字节, 所以没有具体使用).详见文件中注释
+
+		2、utf8_punc.c中定义了string_filter函数,用于过滤一个字符串中的空白、标点(各种标点),
+		将全角字符(3字节)转换成半角字符(1字节),并根据flag标志转小写字母(a-z)为大写字母(A-Z).
+
+		3、acsm.h定义了多模式匹配算法(ac)的各种函数acsmNew acsmAddPattern acsmCompile acsmSearch等.
+		其中acsmSearch即为字符串匹配的函数. 其内部进行三轮匹配:第一轮进行全串匹配,第二轮只匹配A-Z,a-z
+		第三轮匹配除A-Z,a-z的字节.只要在每一轮中匹配到脏词,则立即返回. 
+		第一轮返回3 第二轮返回1 第三轮返回2.(为了兼容旧的版本)
+
+		4、acsm.c实现了多模式匹配算法的各种函数.
+
+		5、tm_dirty_new.h封装acsm.h的各种函数为脏词匹配函数.详见函数注释.
+
+
+注意:	1、脏词文件必须以utf8编码,待匹配的msg也必须以utf8编码.
+
+		2、msg最长可以是1000000字节.
+
+		3、支持多进程,且支持实时更新,
+
+		4、脏词文件列表中, 一行一个脏词, load的过程会跳过#开头的行和空白行, 一行中如果有空白字符
+		会自动紧缩. 如"go fuck yourself" 在内存中会表示成"gofuckyourself". 建议直接在文件中紧缩表示. 
+
+		5、为了兼容旧版本的脏词匹配, tm_dirty.h文件的函数声明中有无用的参数, 详见函数注释. 
+
+		6、脏词库文件支持多种语言, 建议一个国家只存这个国家的语言和英语, 以免内存占用过大. 

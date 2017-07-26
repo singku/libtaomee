@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/dataformatter/bin_str.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/dataformatter/bin_str.h文件参考</h1>用于把数值转换成字符串形式，或者把字符串形式的数字转换成数值。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+bin_str.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="bin__str_8h__incl.png" border="0" usemap="#libtaomee/dataformatter/bin_str.h_map" alt=""></center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static uint8_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bin__str_8h.html#6e630f40364bc3af084c9fe2700d089d">char2hex</a> (char first, char second)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把字符first和second合并成十六进制数值。假设first=='A'，second=='B'，则char2hex的返回值为171，即十六进制的0xAB。  <a href="#6e630f40364bc3af084c9fe2700d089d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bin__str_8h.html#5f943cd00a3f886fdf9a887be11ff4ca">hex2char</a> (uint8_t hex, void *deststring)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把十六进制数值hex转换成字符形式。假设hex==0xCD，则((char*)deststring)[0]=='C'，((char*)deststring)[1]=='D'。  <a href="#5f943cd00a3f886fdf9a887be11ff4ca"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bin__str_8h.html#e29ad7230a01f5e58ec14b06ebe8f259">hex2str</a> (const void *srchex, size_t srclen, void *deststring)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把十六进制的数值数组srchex转换成字符串形式。假设srchex[2]=={ 0xAB, 0xCD }， 则转换成功后deststring里面保存的字符串为"ABCD"。  <a href="#e29ad7230a01f5e58ec14b06ebe8f259"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bin__str_8h.html#54e46b645a1c426ca6640ba49608b882">hex2str_s</a> (const void *srchex, size_t srclen, void *deststring, const void *seperator)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把十六进制的数值数组srchex转换成字符串形式。假设srchex[2]=={ 0xAB, 0xCD }， 则转换成功后deststring里面保存的字符串为"ABCD"。如果指定了分隔符，则B和C之间会有分隔符隔开。  <a href="#54e46b645a1c426ca6640ba49608b882"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="bin__str_8h.html#f8a78995e01309f2704ec844f3aea902">str2hex</a> (const void *srcstring, size_t srclen, void *desthex)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把字符串形式的十六进制数srcstring转换成数值形式。假设srcstring=="ABCD"， 则((uint8_t*)desthex)[0]==0xAB，((uint8_t*)desthex)[1]==0xCD。  <a href="#f8a78995e01309f2704ec844f3aea902"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+用于把数值转换成字符串形式，或者把字符串形式的数字转换成数值。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+note 代码注释里面写的是'\0'并不是写错了，而是为了doxygen生成文档时能够正确显示。<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="6e630f40364bc3af084c9fe2700d089d"></a><!-- doxytag: member="bin_str.h::char2hex" ref="6e630f40364bc3af084c9fe2700d089d" args="(char first, char second)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint8_t char2hex           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>second</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把字符first和second合并成十六进制数值。假设first=='A'，second=='B'，则char2hex的返回值为171，即十六进制的0xAB。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>first</em>&nbsp;</td><td></td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>second</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>first和second合并成的十六进制数值。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="5f943cd00a3f886fdf9a887be11ff4ca"></a><!-- doxytag: member="bin_str.h::hex2char" ref="5f943cd00a3f886fdf9a887be11ff4ca" args="(uint8_t hex, void *deststring)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void hex2char           </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&nbsp;</td>
+          <td class="paramname"> <em>hex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>deststring</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把十六进制数值hex转换成字符形式。假设hex==0xCD，则((char*)deststring)[0]=='C'，((char*)deststring)[1]=='D'。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>hex</em>&nbsp;</td><td>十六进制数值 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>deststring</em>&nbsp;</td><td>hex转换成字符后保存到deststring里。deststring指向的空间不能小于两个字节。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="e29ad7230a01f5e58ec14b06ebe8f259"></a><!-- doxytag: member="bin_str.h::hex2str" ref="e29ad7230a01f5e58ec14b06ebe8f259" args="(const void *srchex, size_t srclen, void *deststring)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void hex2str           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>srchex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&nbsp;</td>
+          <td class="paramname"> <em>srclen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>deststring</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把十六进制的数值数组srchex转换成字符串形式。假设srchex[2]=={ 0xAB, 0xCD }， 则转换成功后deststring里面保存的字符串为"ABCD"。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>srchex</em>&nbsp;</td><td>十六进制的数值数组 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>srclen</em>&nbsp;</td><td>数组长度 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>deststring</em>&nbsp;</td><td>srchex转换成字符串后保存到deststring里。deststring指向的空间不能小于（srclen * 2 + 1）个字节。 转换结束后，deststring以'\0'结尾。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="54e46b645a1c426ca6640ba49608b882"></a><!-- doxytag: member="bin_str.h::hex2str_s" ref="54e46b645a1c426ca6640ba49608b882" args="(const void *srchex, size_t srclen, void *deststring, const void *seperator)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void hex2str_s           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>srchex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&nbsp;</td>
+          <td class="paramname"> <em>srclen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>deststring</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>seperator</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把十六进制的数值数组srchex转换成字符串形式。假设srchex[2]=={ 0xAB, 0xCD }， 则转换成功后deststring里面保存的字符串为"ABCD"。如果指定了分隔符，则B和C之间会有分隔符隔开。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>srchex</em>&nbsp;</td><td>十六进制的数值数组 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>srclen</em>&nbsp;</td><td>数组长度 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>deststring</em>&nbsp;</td><td>srchex转换成字符串后保存到deststring里。deststring指向的空间不能小于 （srclen * (2 + strlen(seperator)) + 1）个字节。转换结束后，deststring以'\0'结尾。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>seperator</em>&nbsp;</td><td>分隔符。假设分隔符为竖线"|"，则deststring里保存"AB|CD"。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f8a78995e01309f2704ec844f3aea902"></a><!-- doxytag: member="bin_str.h::str2hex" ref="f8a78995e01309f2704ec844f3aea902" args="(const void *srcstring, size_t srclen, void *desthex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void str2hex           </td>
+          <td>(</td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>srcstring</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&nbsp;</td>
+          <td class="paramname"> <em>srclen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>desthex</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把字符串形式的十六进制数srcstring转换成数值形式。假设srcstring=="ABCD"， 则((uint8_t*)desthex)[0]==0xAB，((uint8_t*)desthex)[1]==0xCD。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>srcstring</em>&nbsp;</td><td>字符串形式的十六进制数。它的长度必须是偶数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>srclen</em>&nbsp;</td><td>srcstring的长度，必须是偶数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>desthex</em>&nbsp;</td><td>srcstring转换成数值形式后保存到desthex里。desthex指向的空间不能小于(srclen / 2)个字节。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

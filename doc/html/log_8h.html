@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/log.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/log.h文件参考</h1>用于记录日志，一共分9种日志等级。日志文件可以自动轮转。注意：如果使用自动轮转，<br>
+ 必须保证每天写的日志文件个数不能超过log_init时设定的最大文件个数，否则日志会写乱掉。 必须先调用log_init来初始化日志功能。注意，每条日志不能超过8000字节。<br>
+ 如果编译程序时定义宏LOG_USE_SYSLOG，则会利用syslog来记录日志，使用的facility是LOG_USER。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+log.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="log_8h__incl.png" border="0" usemap="#libtaomee/log.h_map" alt=""></center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>宏定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="90195c19a0c997c3ea25967bc0f31c9d"></a><!-- doxytag: member="log.h::EMERG_LOG" ref="90195c19a0c997c3ea25967bc0f31c9d" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#90195c19a0c997c3ea25967bc0f31c9d">EMERG_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;DETAIL(log_lvl_emerg, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_emerg等级日志。如果定义宏DISABLE_EMERG_LOG，则可以在编译期把EMERG_LOG去除。<br>
+ 用法示例：EMERG_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="182e308462dab37c92e4254c948aba40"></a><!-- doxytag: member="log.h::ALERT_LOG" ref="182e308462dab37c92e4254c948aba40" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#182e308462dab37c92e4254c948aba40">ALERT_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;DETAIL(log_lvl_alert, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_alert等级日志。如果定义宏DISABLE_ALERT_LOG，则可以在编译期把ALERT_LOG去除。<br>
+ 用法示例：ALERT_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ab5bead065f38c814737df0eb67a4455"></a><!-- doxytag: member="log.h::CRIT_LOG" ref="ab5bead065f38c814737df0eb67a4455" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#ab5bead065f38c814737df0eb67a4455">CRIT_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;DETAIL(log_lvl_crit, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_crit等级日志。如果定义宏DISABLE_CRIT_LOG，则可以在编译期把CRIT_LOG去除。<br>
+ 用法示例：CRIT_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="533040be788649e62f4d826a3502394d"></a><!-- doxytag: member="log.h::ERROR_LOG" ref="533040be788649e62f4d826a3502394d" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#533040be788649e62f4d826a3502394d">ERROR_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;DETAIL(log_lvl_error, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_error等级日志。如果定义宏DISABLE_ERROR_LOG，则可以在编译期把ERROR_LOG去除。<br>
+ 用法示例：ERROR_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="aac66788a003463ade8982e2f9101c42"></a><!-- doxytag: member="log.h::WARN_LOG" ref="aac66788a003463ade8982e2f9101c42" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#aac66788a003463ade8982e2f9101c42">WARN_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;SIMPLY(log_lvl_warning, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_warning等级日志。如果定义宏DISABLE_WARN_LOG，则可以在编译期把WARN_LOG去除。<br>
+ 用法示例：WARN_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c3bcd9e1b7bb9a1362d9ef4133e3eb80"></a><!-- doxytag: member="log.h::NOTI_LOG" ref="c3bcd9e1b7bb9a1362d9ef4133e3eb80" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#c3bcd9e1b7bb9a1362d9ef4133e3eb80">NOTI_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;SIMPLY(log_lvl_notice, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_notice等级日志。如果定义宏DISABLE_NOTI_LOG，则可以在编译期把NOTI_LOG去除。<br>
+ 用法示例：NOTI_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="9479d40b17d552f392d158e7ac2ebe75"></a><!-- doxytag: member="log.h::INFO_LOG" ref="9479d40b17d552f392d158e7ac2ebe75" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#9479d40b17d552f392d158e7ac2ebe75">INFO_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;SIMPLY(log_lvl_info, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_info等级日志。如果定义宏DISABLE_INFO_LOG，则可以在编译期把INFO_LOG去除。<br>
+ 用法示例：INFO_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="32b5970dd164cd2352763d70ac01d406"></a><!-- doxytag: member="log.h::DEBUG_LOG" ref="32b5970dd164cd2352763d70ac01d406" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#32b5970dd164cd2352763d70ac01d406">DEBUG_LOG</a>(fmt, args...)&nbsp;&nbsp;&nbsp;SIMPLY(log_lvl_debug, fmt, ##args)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_debug等级日志。如果定义宏DISABLE_DEBUG_LOG，则可以在编译期把DEBUG_LOG去除。<br>
+ 用法示例：DEBUG_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="948e5c5313f2e3760c620f0830f81414"></a><!-- doxytag: member="log.h::TRACE_LOG" ref="948e5c5313f2e3760c620f0830f81414" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#948e5c5313f2e3760c620f0830f81414">TRACE_LOG</a>(fmt, args...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_trace等级日志。如果不定义宏ENABLE_TRACE_LOG，则可以在编译期把TRACE_LOG去除。<br>
+ 如果编译时定义了宏LOG_USE_SYSLOG，则TRACE_LOG日志会写到DEBUG_LOG日志文件里。<br>
+ 用法示例：TRACE_LOG("dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3bf192b7768056c295ac3e3ed70c1ca9"></a><!-- doxytag: member="log.h::BOOT_LOG" ref="3bf192b7768056c295ac3e3ed70c1ca9" args="(OK, fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#3bf192b7768056c295ac3e3ed70c1ca9">BOOT_LOG</a>(OK, fmt, args...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出程序启动日志到屏幕。如果OK非0，则退出程序；如果OK为0，则返回上一级函数。<br>
+ 用法示例：BOOT_LOG(-1, "dlopen error, %s", error); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="eabbfeb9754fef0328499b16862acb42"></a><!-- doxytag: member="log.h::BOOT_LOG2" ref="eabbfeb9754fef0328499b16862acb42" args="(OK, n, fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#eabbfeb9754fef0328499b16862acb42">BOOT_LOG2</a>(OK, n, fmt, args...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出程序启动日志到屏幕。如果OK非0，则退出程序；如果OK为0，则返回上一级函数。n是空格填充个数。<br>
+ 用法示例：BOOT_LOG2(0, 8, "dlopen ok"); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="97375f029403d1d02feda8bfc0346ddf"></a><!-- doxytag: member="log.h::ERROR_RETURN" ref="97375f029403d1d02feda8bfc0346ddf" args="(X, Y)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#97375f029403d1d02feda8bfc0346ddf">ERROR_RETURN</a>(X, Y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_error等级的日志，并且返回Y到上一级函数。<br>
+ 用法示例：ERROR_RETURN(("Failed to Create `mcast_fd`: err=%d %s", errno, strerror(errno)), -1); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3fcf479a5cf31af47e8872b854578f61"></a><!-- doxytag: member="log.h::ERROR_RETURN_VOID" ref="3fcf479a5cf31af47e8872b854578f61" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#3fcf479a5cf31af47e8872b854578f61">ERROR_RETURN_VOID</a>(fmt, args...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_error等级的日志，并且返回上一级函数。<br>
+ 用法示例：ERROR_RETURN("Failed to Create `mcast_fd`: err=%d %s", errno, strerror(errno)); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="7779fc1d83986c90baf45accd9049a03"></a><!-- doxytag: member="log.h::WARN_RETURN" ref="7779fc1d83986c90baf45accd9049a03" args="(msg_, ret_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#7779fc1d83986c90baf45accd9049a03">WARN_RETURN</a>(msg_, ret_)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_warning等级的日志，并且返回ret_到上一级函数。<br>
+ 用法示例：WARN_RETURN(("Failed to Create `mcast_fd`: err=%d %s", errno, strerror(errno)), -1); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2150cf6d903d7965caca8ed284a45dbf"></a><!-- doxytag: member="log.h::WARN_RETURN_VOID" ref="2150cf6d903d7965caca8ed284a45dbf" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#2150cf6d903d7965caca8ed284a45dbf">WARN_RETURN_VOID</a>(fmt, args...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_warning等级的日志，并且返回上一级函数。<br>
+ 用法示例：WARN_RETURN_VOID("Failed to Create `mcast_fd`: err=%d %s", errno, strerror(errno)); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b0832223289adfe2bb3df229bbbe87a0"></a><!-- doxytag: member="log.h::DEBUG_RETURN" ref="b0832223289adfe2bb3df229bbbe87a0" args="(msg_, ret_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#b0832223289adfe2bb3df229bbbe87a0">DEBUG_RETURN</a>(msg_, ret_)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_debug等级的日志，并且返回ret_到上一级函数。<br>
+ 用法示例：DEBUG_RETURN(("Failed to Create `mcast_fd`: err=%d %s", errno, strerror(errno)), -1); <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="06cce383a9552527e50afceba9303d47"></a><!-- doxytag: member="log.h::DEBUG_RETURN_VOID" ref="06cce383a9552527e50afceba9303d47" args="(fmt, args...)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#06cce383a9552527e50afceba9303d47">DEBUG_RETURN_VOID</a>(fmt, args...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">输出log_lvl_debug等级的日志，并且返回上一级函数。<br>
+ 用法示例：DEBUG_RETURN_VOID("Failed to Create `mcast_fd`: err=%d %s", errno, strerror(errno)); <br></td></tr>
+<tr><td colspan="2"><br><h2>类型定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8b723e16b8842f0fd7ffe8f50e19342"></a><!-- doxytag: member="log.h::log_lvl_t" ref="a8b723e16b8842f0fd7ffe8f50e19342" args="" -->
+typedef enum <a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1">log_lvl</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#a8b723e16b8842f0fd7ffe8f50e19342">log_lvl_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">typedef of log_lvl <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d29f26627b8d53c653853504a6b9dce7"></a><!-- doxytag: member="log.h::log_dest_t" ref="d29f26627b8d53c653853504a6b9dce7" args="" -->
+typedef enum <a class="el" href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd2">log_dest</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#d29f26627b8d53c653853504a6b9dce7">log_dest_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">typedef of log_dest <br></td></tr>
+<tr><td colspan="2"><br><h2>枚举</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1">log_lvl</a> { <br>
+&nbsp;&nbsp;<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a152880d302f181fa9a3bbb6450d6132d0">log_lvl_emerg</a>, 
+<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a16808e0cdd9a89c4dada9ed082afd480d">log_lvl_alert</a>, 
+<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1dbbad798dcda7e5f183969e1c6ca0a74">log_lvl_crit</a>, 
+<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1718db63d0f68eb586c016c430a5eadcf">log_lvl_error</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a16bc3c348bb1b160de673da248a4aadd9">log_lvl_warning</a>, 
+<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a14fcbcaafb2ba9eba9b943d651ad631ad">log_lvl_notice</a>, 
+<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a105a4e50ed0dfe6e2012a4bbe9a9b4c62">log_lvl_info</a>, 
+<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a14399118646480d43aed08587990df064">log_lvl_debug</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1314cb6acda116d6eca347f977b583ae1">log_lvl_trace</a>
+<br>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">日志等级  <a href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1">更多...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd2">log_dest</a> { <a class="el" href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd292f0940cec00377b0d72c7d85dd2e2cf">log_dest_terminal</a> =  1, 
+<a class="el" href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd2467441602f84e7a20c364283c598fae1">log_dest_file</a> =  2, 
+<a class="el" href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd2360abf6eb26f017f5672d2adc6818392">log_dest_both</a> =  3
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">日志输出方式  <a href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd2">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#91b009deeeeb8292a149ab70aa64d950">log_init</a> (const char *dir, <a class="el" href="log_8h.html#a8b723e16b8842f0fd7ffe8f50e19342">log_lvl_t</a> lvl, uint32_t size, int maxfiles, const char *pre_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">初始化日志记录功能。如果使用自动轮转，必须保证每天写的日志文件个数不能超过最大文件个数（maxfiles）， 否则日志会写乱掉。  <a href="#91b009deeeeb8292a149ab70aa64d950"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#690d9f1f5c4af45a7f8c48c0b7b6760f">set_log_dest</a> (<a class="el" href="log_8h.html#d29f26627b8d53c653853504a6b9dce7">log_dest_t</a> dest)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">调用log_init初始化日志功能后，可以调用该函数动态调整日志的输出方式。如果不调用set_log_dest的话， 则输出方式为log_init时确定的方式。注意：必须在log_init时指定了日志保存目录，才可以调用该函数。  <a href="#690d9f1f5c4af45a7f8c48c0b7b6760f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2e60e0b56dbfa262542bef02422412db"></a><!-- doxytag: member="log.h::enable_multi_thread" ref="2e60e0b56dbfa262542bef02422412db" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8h.html#2e60e0b56dbfa262542bef02422412db">enable_multi_thread</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">这个写日志的库默认不支持多线程！多线程程序写日志的话，需要调用先一下这个函数，否则会有问题。 <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+用于记录日志，一共分9种日志等级。日志文件可以自动轮转。注意：如果使用自动轮转，<br>
+ 必须保证每天写的日志文件个数不能超过log_init时设定的最大文件个数，否则日志会写乱掉。 必须先调用log_init来初始化日志功能。注意，每条日志不能超过8000字节。<br>
+ 如果编译程序时定义宏LOG_USE_SYSLOG，则会利用syslog来记录日志，使用的facility是LOG_USER。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>枚举类型文档</h2>
+<a class="anchor" name="e2ac88ae0ccfa834cf77d1c610dd5cd2"></a><!-- doxytag: member="log.h::log_dest" ref="e2ac88ae0ccfa834cf77d1c610dd5cd2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="log_8h.html#e2ac88ae0ccfa834cf77d1c610dd5cd2">log_dest</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+日志输出方式 
+<p>
+<dl compact><dt><b>枚举值: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="e2ac88ae0ccfa834cf77d1c610dd5cd292f0940cec00377b0d72c7d85dd2e2cf"></a><!-- doxytag: member="log_dest_terminal" ref="e2ac88ae0ccfa834cf77d1c610dd5cd292f0940cec00377b0d72c7d85dd2e2cf" args="" -->log_dest_terminal</em>&nbsp;</td><td>
+仅输出到屏幕 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="e2ac88ae0ccfa834cf77d1c610dd5cd2467441602f84e7a20c364283c598fae1"></a><!-- doxytag: member="log_dest_file" ref="e2ac88ae0ccfa834cf77d1c610dd5cd2467441602f84e7a20c364283c598fae1" args="" -->log_dest_file</em>&nbsp;</td><td>
+仅输出到文件 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="e2ac88ae0ccfa834cf77d1c610dd5cd2360abf6eb26f017f5672d2adc6818392"></a><!-- doxytag: member="log_dest_both" ref="e2ac88ae0ccfa834cf77d1c610dd5cd2360abf6eb26f017f5672d2adc6818392" args="" -->log_dest_both</em>&nbsp;</td><td>
+既输出到屏幕，也输出到文件 </td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ba53b421d90f96e07f19e4797676b2a1"></a><!-- doxytag: member="log.h::log_lvl" ref="ba53b421d90f96e07f19e4797676b2a1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="log_8h.html#ba53b421d90f96e07f19e4797676b2a1">log_lvl</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+日志等级 
+<p>
+<dl compact><dt><b>枚举值: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a152880d302f181fa9a3bbb6450d6132d0"></a><!-- doxytag: member="log_lvl_emerg" ref="ba53b421d90f96e07f19e4797676b2a152880d302f181fa9a3bbb6450d6132d0" args="" -->log_lvl_emerg</em>&nbsp;</td><td>
+system is unusable -- 0 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a16808e0cdd9a89c4dada9ed082afd480d"></a><!-- doxytag: member="log_lvl_alert" ref="ba53b421d90f96e07f19e4797676b2a16808e0cdd9a89c4dada9ed082afd480d" args="" -->log_lvl_alert</em>&nbsp;</td><td>
+action must be taken immediately -- 1 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a1dbbad798dcda7e5f183969e1c6ca0a74"></a><!-- doxytag: member="log_lvl_crit" ref="ba53b421d90f96e07f19e4797676b2a1dbbad798dcda7e5f183969e1c6ca0a74" args="" -->log_lvl_crit</em>&nbsp;</td><td>
+critical conditions -- 2 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a1718db63d0f68eb586c016c430a5eadcf"></a><!-- doxytag: member="log_lvl_error" ref="ba53b421d90f96e07f19e4797676b2a1718db63d0f68eb586c016c430a5eadcf" args="" -->log_lvl_error</em>&nbsp;</td><td>
+error conditions -- 3 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a16bc3c348bb1b160de673da248a4aadd9"></a><!-- doxytag: member="log_lvl_warning" ref="ba53b421d90f96e07f19e4797676b2a16bc3c348bb1b160de673da248a4aadd9" args="" -->log_lvl_warning</em>&nbsp;</td><td>
+warning conditions -- 4 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a14fcbcaafb2ba9eba9b943d651ad631ad"></a><!-- doxytag: member="log_lvl_notice" ref="ba53b421d90f96e07f19e4797676b2a14fcbcaafb2ba9eba9b943d651ad631ad" args="" -->log_lvl_notice</em>&nbsp;</td><td>
+normal but significant condition -- 5 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a105a4e50ed0dfe6e2012a4bbe9a9b4c62"></a><!-- doxytag: member="log_lvl_info" ref="ba53b421d90f96e07f19e4797676b2a105a4e50ed0dfe6e2012a4bbe9a9b4c62" args="" -->log_lvl_info</em>&nbsp;</td><td>
+informational -- 6 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a14399118646480d43aed08587990df064"></a><!-- doxytag: member="log_lvl_debug" ref="ba53b421d90f96e07f19e4797676b2a14399118646480d43aed08587990df064" args="" -->log_lvl_debug</em>&nbsp;</td><td>
+debug-level messages -- 7 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="ba53b421d90f96e07f19e4797676b2a1314cb6acda116d6eca347f977b583ae1"></a><!-- doxytag: member="log_lvl_trace" ref="ba53b421d90f96e07f19e4797676b2a1314cb6acda116d6eca347f977b583ae1" args="" -->log_lvl_trace</em>&nbsp;</td><td>
+trace-level messages -- 8。如果定义了宏LOG_USE_SYSLOG，则log_lvl_trace==log_lvl_debug </td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>函数文档</h2>
+<a class="anchor" name="91b009deeeeb8292a149ab70aa64d950"></a><!-- doxytag: member="log.h::log_init" ref="91b009deeeeb8292a149ab70aa64d950" args="(const char *dir, log_lvl_t lvl, uint32_t size, int maxfiles, const char *pre_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int log_init           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="log_8h.html#a8b723e16b8842f0fd7ffe8f50e19342">log_lvl_t</a>&nbsp;</td>
+          <td class="paramname"> <em>lvl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>maxfiles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>pre_name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+初始化日志记录功能。如果使用自动轮转，必须保证每天写的日志文件个数不能超过最大文件个数（maxfiles）， 否则日志会写乱掉。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>char* dir, 日志保存目录。如果填0，则在屏幕中输出日志。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>lvl, 日志输出等级。如果设置为log_lvl_notice，则log_lvl_notice以上等级的日志都不输出。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>uint32_t</em>&nbsp;</td><td>size, 每个日志文件的大小限制（byte），超过这个大小则自动创建一个新的日志文件。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>maxfiles, 每种等级的日志的最大文件个数，用于控制日志轮转。个数越少，日志轮转时效率越高。 如果填0，则表示不使用日志轮转功能。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>char* pre_name, 日志文件名前缀。</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="log_8h.html#690d9f1f5c4af45a7f8c48c0b7b6760f" title="调用log_init初始化日志功能后，可以调用该函数动态调整日志的输出方式。�...">set_log_dest</a></dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, 成功则返回0，失败则退出程序。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="690d9f1f5c4af45a7f8c48c0b7b6760f"></a><!-- doxytag: member="log.h::set_log_dest" ref="690d9f1f5c4af45a7f8c48c0b7b6760f" args="(log_dest_t dest)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_log_dest           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="log_8h.html#d29f26627b8d53c653853504a6b9dce7">log_dest_t</a>&nbsp;</td>
+          <td class="paramname"> <em>dest</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+调用log_init初始化日志功能后，可以调用该函数动态调整日志的输出方式。如果不调用set_log_dest的话， 则输出方式为log_init时确定的方式。注意：必须在log_init时指定了日志保存目录，才可以调用该函数。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dest</em>&nbsp;</td><td>日志输出方式</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="log_8h.html#91b009deeeeb8292a149ab70aa64d950" title="初始化日志记录功能。如果使用自动轮转，必须保证每天写的日志文件个数�...">log_init</a> </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

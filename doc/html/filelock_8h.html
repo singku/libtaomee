@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/interprocess/filelock.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/interprocess/filelock.h文件参考</h1>用于操作文件锁。注意事项：<br>
+ 1. 关闭文件会导致该文件的所有文件锁都被解锁。假设fd1和fd2 对应的都是同一个文件，那么无论关闭了fd1或者fd2，都会导致 该文件的所有文件锁被解锁。<br>
+ 2. 子进程不能继承父进程获得的文件锁。<br>
+ 3. 通过exec来执行新的程序的话，这个新的程序可以继承原来的 程序的文件锁。但是，如果原来的文件对应的fd被设置了close-on-exec 位的话，则不能继承原来程序的文件锁。<br>
+ Advanced Programming in the UNIX Environment - 14.3. Record Locking 中有更详细的说明，建议认真阅读一下。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+filelock.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="filelock_8h__incl.png" border="0" usemap="#libtaomee/interprocess/filelock.h_map" alt=""></center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>宏定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="34717a222aa202d00031113c01e4ee48"></a><!-- doxytag: member="filelock.h::filelock_rlock" ref="34717a222aa202d00031113c01e4ee48" args="(fd_, offset_, whence_, len_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#34717a222aa202d00031113c01e4ee48">filelock_rlock</a>(fd_, offset_, whence_, len_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLKW, F_RDLCK, (offset_), (whence_), (len_))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取读锁。如果获取不到，则一直阻塞，直到可以成功获取，或者发生错误为止。<br>
+ int fd_ 文件描述符，需要上读锁的文件。<br>
+ off_t offset_ 相对whence_的偏移量（byte）。offset_和whence_共同决定了上锁的起始位置。<br>
+ int whence_ 可以是SEEK_SET（文件起始位置）、SEEK_CUR（文件当前位置）或SEEK_END（文件末尾）。<br>
+ off_t len_ 从起始位置开始上锁的长度（byte）。如果len_为0，则把起始位置到文件可能的最大偏移量这个区间都上锁。<br>
+ 用法示例：假设当前位于文件的第10个字节，则filelock_rlock(fd, 2, SEEK_CUR, 4);将会把该文件的12到15个字节上锁。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="55ffd9c8bf6557f53c338034d9a8a656"></a><!-- doxytag: member="filelock.h::filelock_try_rlock" ref="55ffd9c8bf6557f53c338034d9a8a656" args="(fd_, offset_, whence_, len_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#55ffd9c8bf6557f53c338034d9a8a656">filelock_try_rlock</a>(fd_, offset_, whence_, len_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLK, F_RDLCK, (offset_), (whence_), (len_))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取读锁。如果获取不到，则马上返回-1。<br>
+ int fd_ 文件描述符，需要上读锁的文件。<br>
+ off_t offset_ 相对whence_的偏移量（byte）。offset_和whence_共同决定了上锁的起始位置。<br>
+ int whence_ 可以是SEEK_SET（文件起始位置）、SEEK_CUR（文件当前位置）或SEEK_END（文件末尾）。<br>
+ off_t len_ 从起始位置开始上锁的长度（byte）。如果len_为0，则把起始位置到文件可能的最大偏移量这个区间都上锁。<br>
+ 用法示例：假设当前位于文件的第10个字节，则filelock_try_rlock(fd, 2, SEEK_SET, 0);将会把该文件的第2个字节开始， 一直到到文件可能的最大偏移量这段区间都上锁。这样，无论以后往该文件的末尾添加了多少字节，这些字节都 属于被上锁的区间。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="546c010d65edbc935fd21162d84ecb6f"></a><!-- doxytag: member="filelock.h::filelock_rlockfile" ref="546c010d65edbc935fd21162d84ecb6f" args="(fd_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#546c010d65edbc935fd21162d84ecb6f">filelock_rlockfile</a>(fd_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLKW, F_RDLCK, 0, SEEK_SET, 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">给整个文件上读锁。如果上不了，则一直阻塞，直到成功，或者发生错误为止。<br>
+ int fd_ 文件描述符，需要上读锁的文件。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0ebf3de092d0f1f710a862a0f1270c69"></a><!-- doxytag: member="filelock.h::filelock_try_rlockfile" ref="0ebf3de092d0f1f710a862a0f1270c69" args="(fd_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#0ebf3de092d0f1f710a862a0f1270c69">filelock_try_rlockfile</a>(fd_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLK, F_RDLCK, 0, SEEK_SET, 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">给整个文件上读锁。如果上不了，则马上返回-1。<br>
+ int fd_ 文件描述符，需要上读锁的文件。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="999bfb12eb20ee39996b1283a6cda11a"></a><!-- doxytag: member="filelock.h::filelock_wlock" ref="999bfb12eb20ee39996b1283a6cda11a" args="(fd_, offset_, whence_, len_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#999bfb12eb20ee39996b1283a6cda11a">filelock_wlock</a>(fd_, offset_, whence_, len_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLKW, F_WRLCK, (offset_), (whence_), (len_))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取写锁。如果获取不到，则一直阻塞，直到可以成功获取，或者发生错误为止。<br>
+ int fd_ 文件描述符，需要上写锁的文件。<br>
+ off_t offset_ 相对whence_的偏移量（byte）。offset_和whence_共同决定了上锁的起始位置。<br>
+ int whence_ 可以是SEEK_SET（文件起始位置）、SEEK_CUR（文件当前位置）或SEEK_END（文件末尾）。<br>
+ off_t len_ 从起始位置开始上锁的长度（byte）。如果len_为0，则把起始位置到文件可能的最大偏移量这个区间都上锁。<br>
+ 用法示例：假设当前位于文件的第10个字节，则filelock_wlock(fd, 2, SEEK_CUR, -4);将会把该文件的9到12字节上锁。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f26dd5b79622848bc3f260e15ec8b3b4"></a><!-- doxytag: member="filelock.h::filelock_try_wlock" ref="f26dd5b79622848bc3f260e15ec8b3b4" args="(fd_, offset_, whence_, len_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#f26dd5b79622848bc3f260e15ec8b3b4">filelock_try_wlock</a>(fd_, offset_, whence_, len_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLK, F_WRLCK, (offset_), (whence_), (len_))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取写锁。如果获取不到，则马上返回-1。<br>
+ int fd_ 文件描述符，需要上写锁的文件。<br>
+ off_t offset_ 相对whence_的偏移量（byte）。offset_和whence_共同决定了上锁的起始位置。<br>
+ int whence_ 可以是SEEK_SET（文件起始位置）、SEEK_CUR（文件当前位置）或SEEK_END（文件末尾）。<br>
+ off_t len_ 从起始位置开始上锁的长度（byte）。如果len_为0，则把起始位置到文件可能的最大偏移量这个区间都上锁。<br>
+ 用法示例：假设当前位于文件的第10个字节，则filelock_try_wlock(fd, 2, SEEK_SET, 0);将会把该文件的第2个字节开始， 一直到到文件可能的最大偏移量这段区间都上锁。这样，无论以后往该文件的末尾添加了多少字节，这些字节都 属于被上锁的区间。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="62c69bed434a03d04b2139ce0e8ccb8c"></a><!-- doxytag: member="filelock.h::filelock_wlockfile" ref="62c69bed434a03d04b2139ce0e8ccb8c" args="(fd_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#62c69bed434a03d04b2139ce0e8ccb8c">filelock_wlockfile</a>(fd_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLKW, F_WRLCK, 0, SEEK_SET, 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">给整个文件上写锁。如果上不了，则一直阻塞，直到成功，或者发生错误为止。<br>
+ int fd_ 文件描述符，需要上写锁的文件。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b09939d09718f6548d8ca74251847121"></a><!-- doxytag: member="filelock.h::filelock_try_wlockfile" ref="b09939d09718f6548d8ca74251847121" args="(fd_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#b09939d09718f6548d8ca74251847121">filelock_try_wlockfile</a>(fd_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLK, F_WRLCK, 0, SEEK_SET, 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">给整个文件上写锁。如果上不了，则马上返回-1。<br>
+ int fd_ 文件描述符，需要上写锁的文件。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c38185523590633760031acefbdd76f3"></a><!-- doxytag: member="filelock.h::filelock_unlock" ref="c38185523590633760031acefbdd76f3" args="(fd_, offset_, whence_, len_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#c38185523590633760031acefbdd76f3">filelock_unlock</a>(fd_, offset_, whence_, len_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLK, F_UNLCK, (offset_), (whence_), (len_))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解锁。 int fd_ 文件描述符，需要解锁的文件。<br>
+ off_t offset_ 相对whence_的偏移量（byte）。offset_和whence_共同决定了解锁的起始位置。<br>
+ int whence_ 可以是SEEK_SET（文件起始位置）、SEEK_CUR（文件当前位置）或SEEK_END（文件末尾）。<br>
+ off_t len_ 从起始位置开始解锁的长度（byte）。如果len_为0，则把起始位置到文件可能的最大偏移量这个区间都解锁。<br>
+ 用法示例：假设当前位于文件的第10个字节，则filelock_unlock(fd, 2, SEEK_CUR, 4);将会把该文件的12到15个字节解锁。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="02a930d5f919fd93ff8bfc7a55d4a228"></a><!-- doxytag: member="filelock.h::filelock_unlockfile" ref="02a930d5f919fd93ff8bfc7a55d4a228" args="(fd_)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="filelock_8h.html#02a930d5f919fd93ff8bfc7a55d4a228">filelock_unlockfile</a>(fd_)&nbsp;&nbsp;&nbsp;filelock_lock((fd_), F_SETLK, F_UNLCK, 0, SEEK_SET, 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解锁整个文件。<br>
+ int fd_ 文件描述符，需要解锁的文件。<br>
+ 返回值： 0成功，-1失败。 <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+用于操作文件锁。注意事项：<br>
+ 1. 关闭文件会导致该文件的所有文件锁都被解锁。假设fd1和fd2 对应的都是同一个文件，那么无论关闭了fd1或者fd2，都会导致 该文件的所有文件锁被解锁。<br>
+ 2. 子进程不能继承父进程获得的文件锁。<br>
+ 3. 通过exec来执行新的程序的话，这个新的程序可以继承原来的 程序的文件锁。但是，如果原来的文件对应的fd被设置了close-on-exec 位的话，则不能继承原来程序的文件锁。<br>
+ Advanced Programming in the UNIX Environment - 14.3. Record Locking 中有更详细的说明，建议认真阅读一下。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ </div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

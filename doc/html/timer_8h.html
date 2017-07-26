@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/timer.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/timer.h文件参考</h1>定时器函数，有秒级和毫秒级两种精度的接口。用于设定某一时刻调用某个函数。需要glib支持。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+timer.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="timer_8h__incl.png" border="0" usemap="#libtaomee/timer.h_map" alt=""></center>
+<map name="libtaomee/timer.h_map">
+<area shape="rect" href="time_8h.html" title="和时间相关的函数。部分函数需要glib支持。" alt="" coords="93,80,149,107"><area shape="rect" href="list_8h.html" title="从内核代码里抽取出来的侵入式链表操作函数/宏。 &#160;Simple doubly..." alt="" coords="467,80,576,107"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>组合类型</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimer__struct.html">timer_struct</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">秒级定时器。  <a href="structtimer__struct.html#_details">更多...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmicro__timer__struct.html">micro_timer_struct</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">微秒级定时器。  <a href="structmicro__timer__struct.html#_details">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>宏定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#9b54a072c598cc36d0b1553457ef500e">ADD_TIMER_EVENT</a>(owner_, func_, data_, exptm_)&nbsp;&nbsp;&nbsp;add_event( &amp;((owner_)-&gt;timer_list), (func_), (owner_), (data_), (exptm_), timer_add_new_timer)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调函数是func_，传递给回调函数 func_的第一个参数是owner_，第二个参数是data_。如果你要传递给回调函数的第一个参数是一个结构体， 并且该结构体里面有一个名为timer_list的list_head_t类型的成员变量，那么你就可以使用这个宏来简化创建新定时器的操作。  <a href="#9b54a072c598cc36d0b1553457ef500e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#a8116d329233aa173cdc35f0490bc4fc">REMOVE_TIMER</a>(timer_)&nbsp;&nbsp;&nbsp;do_remove_timer((timer_), 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">删除秒级定时器timer_。  <a href="#a8116d329233aa173cdc35f0490bc4fc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#0770a16670242e22010e8e426b043267">REMOVE_MICRO_TIMER</a>(timer_)&nbsp;&nbsp;&nbsp;remove_micro_timer((timer_), 0)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">删除微秒级定时器timer_，并释放内存。  <a href="#0770a16670242e22010e8e426b043267"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#3a4c967556215f3f9d7a2ab84902abac">REMOVE_TIMERS</a>(owner_)&nbsp;&nbsp;&nbsp;remove_timers(&amp;((owner_)-&gt;timer_list)), remove_micro_timers((owner_))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">删除owner_指向的结构体中timer_list成员变量中的所有定时器（对应秒级定时器），并释放内存； 删除传递给回调函数的第一个参数==owner_的所有微秒级定时器，并释放内存。  <a href="#3a4c967556215f3f9d7a2ab84902abac"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>类型定义</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="83cd28f19c146eb2252e8fefc6956ba1"></a><!-- doxytag: member="timer.h::timer_cb_func_t" ref="83cd28f19c146eb2252e8fefc6956ba1" args=")(void *, void *)" -->
+typedef int(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#83cd28f19c146eb2252e8fefc6956ba1">timer_cb_func_t</a> )(void *, void *)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">回调函数的类型。如果回调函数返回0，则表示定时器到期时要删除该定时器，反之，则不删除。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="76e37a8121665a6d2905e72cf9aed865"></a><!-- doxytag: member="timer.h::timer_struct_t" ref="76e37a8121665a6d2905e72cf9aed865" args="" -->
+typedef struct <a class="el" href="structtimer__struct.html">timer_struct</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#76e37a8121665a6d2905e72cf9aed865">timer_struct_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">timer_struct的typedef。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="bca8452fa9c7aa865781146c382fd40b"></a><!-- doxytag: member="timer.h::micro_timer_struct_t" ref="bca8452fa9c7aa865781146c382fd40b" args="" -->
+typedef struct <a class="el" href="structmicro__timer__struct.html">micro_timer_struct</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#bca8452fa9c7aa865781146c382fd40b">micro_timer_struct_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">micro_timer_struct的typedef。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5cdbee127eb0cd3f2557d361c94fa10e"></a><!-- doxytag: member="timer.h::timer_add_mode_t" ref="5cdbee127eb0cd3f2557d361c94fa10e" args="" -->
+typedef enum <a class="el" href="timer_8h.html#b106db46a600e93597080f6f649fdd80">timer_add_mode</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#5cdbee127eb0cd3f2557d361c94fa10e">timer_add_mode_t</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">timer_add_mode的typedef。 <br></td></tr>
+<tr><td colspan="2"><br><h2>枚举</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#b106db46a600e93597080f6f649fdd80">timer_add_mode</a> { <a class="el" href="timer_8h.html#b106db46a600e93597080f6f649fdd802674d72f136fc80ce6f3abe09f5de3e7">timer_add_new_timer</a>, 
+<a class="el" href="timer_8h.html#b106db46a600e93597080f6f649fdd8042c17295c492d4dd4dcbabe3ed971568">timer_replace_timer</a>
+ }</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">定时器添加模式。用于add_event函数。  <a href="timer_8h.html#b106db46a600e93597080f6f649fdd80">更多...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#4e7127f2f48fb1c538bbd67fe921c58c">setup_timer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">初始化定时器功能。必须调用了这个函数，才能使用定时器功能。  <a href="#4e7127f2f48fb1c538bbd67fe921c58c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#bac234633d2eeaf6c47f8ba2b108bb2a">destroy_timer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">销毁所有定时器（包括秒级和微秒级的定时器），并释放内存。  <a href="#bac234633d2eeaf6c47f8ba2b108bb2a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#fc6f2ceaca31fa154d6b202b0b147d8f">renew_now</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">更新当前时间。  <a href="#fc6f2ceaca31fa154d6b202b0b147d8f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0ccc4b7dfea48d6b17451c6ee1749668"></a><!-- doxytag: member="timer.h::handle_timer" ref="0ccc4b7dfea48d6b17451c6ee1749668" args="()" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#0ccc4b7dfea48d6b17451c6ee1749668">handle_timer</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">扫描定时器列表，调用到期了的定时器的回调函数，并根据回调函数的返回值决定是否需要把该定时器删除掉。 如果回调函数返回0，则表示要删除该定时器，反之，则不删除。必须定期调用该函数才能调用到期了的定时器的回调函数。 <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structtimer__struct.html">timer_struct_t</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#782ebc354068eb04bdd25136a6592bed">add_event</a> (<a class="el" href="structlist__head.html">list_head_t</a> *head, <a class="el" href="timer_8h.html#83cd28f19c146eb2252e8fefc6956ba1">timer_cb_func_t</a> func, void *owner, void *data, time_t expire, <a class="el" href="timer_8h.html#5cdbee127eb0cd3f2557d361c94fa10e">timer_add_mode_t</a> flag)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数是func。  <a href="#782ebc354068eb04bdd25136a6592bed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#1bef9882bde91931b3355173ad84a12f">mod_expire_time</a> (<a class="el" href="structtimer__struct.html">timer_struct_t</a> *tmr, time_t exptm)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">修改秒级定时器tmr的到期时间。注意：绝对不能在定时器的回调函数中修改该定时器的到期时间！  <a href="#1bef9882bde91931b3355173ad84a12f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#8fb3bcd84dacaa79323b52a8414fbc33">remove_timers</a> (<a class="el" href="structlist__head.html">list_head_t</a> *head)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">删除链表head中所有的定时器，并释放内存。用于删除秒级定时器。  <a href="#8fb3bcd84dacaa79323b52a8414fbc33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structmicro__timer__struct.html">micro_timer_struct_t</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#3a1efee29bed0f09a436a25ea4b1e02e">add_micro_event</a> (<a class="el" href="timer_8h.html#83cd28f19c146eb2252e8fefc6956ba1">timer_cb_func_t</a> func, const struct timeval *tv, void *owner, void *data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">添加一个微秒级定时器，该定时器的到期时间是tv，到期时回调的函数是func。  <a href="#3a1efee29bed0f09a436a25ea4b1e02e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#1e98e5760d97bc21fd1cb7064c6aa2f8">remove_micro_timers</a> (void *owner)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">删除传递给回调函数的第一个参数==owner的所有微秒级定时器，并释放内存。  <a href="#1e98e5760d97bc21fd1cb7064c6aa2f8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static struct timeval *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#8b2f3522af99a9b985f9038e6fe368a6">get_now_tv</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理客户端发过来的数据包的程序， 可以先调用一次renew_now，然后处理N个数据包，然后再调用一次renew_now，接着再处理N个数据包，如此反复。 这样在处理数据包的函数里就可以直接使用get_now_tv来获取不太精确的当前时间，从而能稍微提升程序的效率。  <a href="#8b2f3522af99a9b985f9038e6fe368a6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static struct tm *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="timer_8h.html#f7c38ea3815c0fcdb6bcb6d42099f536">get_now_tm</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理客户端发过来的数据包的程序， 可以先调用一次renew_now，然后处理N个数据包，然后再调用一次renew_now，接着再处理N个数据包，如此反复。 这样在处理数据包的函数里就可以直接使用get_now_tm来获取不太精确的当前时间，从而能稍微提升程序的效率。  <a href="#f7c38ea3815c0fcdb6bcb6d42099f536"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+定时器函数，有秒级和毫秒级两种精度的接口。用于设定某一时刻调用某个函数。需要glib支持。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>宏定义文档</h2>
+<a class="anchor" name="9b54a072c598cc36d0b1553457ef500e"></a><!-- doxytag: member="timer.h::ADD_TIMER_EVENT" ref="9b54a072c598cc36d0b1553457ef500e" args="(owner_, func_, data_, exptm_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADD_TIMER_EVENT          </td>
+          <td>(</td>
+          <td class="paramtype">owner_,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">func_,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">data_,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">exptm_&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;add_event( &amp;((owner_)-&gt;timer_list), (func_), (owner_), (data_), (exptm_), timer_add_new_timer)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调函数是func_，传递给回调函数 func_的第一个参数是owner_，第二个参数是data_。如果你要传递给回调函数的第一个参数是一个结构体， 并且该结构体里面有一个名为timer_list的list_head_t类型的成员变量，那么你就可以使用这个宏来简化创建新定时器的操作。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>owner_</em>&nbsp;</td><td>传递给回调函数的第一个参数。指针类型，指向一个结构体，并且这个结构体里面必须有一个名为 timer_list的list_head_t类型的成员变量。新创建的定时器会被插入到owner_下的timer_list链表中。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>func_</em>&nbsp;</td><td>定时器到期时调用的回调函数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data_</em>&nbsp;</td><td>传递给回调函数的第二个参数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>exptm_</em>&nbsp;</td><td>定时器的到期时间（从Epoch开始的秒数）。 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>指向新创建的秒级定时器的指针。 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#782ebc354068eb04bdd25136a6592bed" title="添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数...">add_event</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="0770a16670242e22010e8e426b043267"></a><!-- doxytag: member="timer.h::REMOVE_MICRO_TIMER" ref="0770a16670242e22010e8e426b043267" args="(timer_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REMOVE_MICRO_TIMER          </td>
+          <td>(</td>
+          <td class="paramtype">timer_&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;remove_micro_timer((timer_), 0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+删除微秒级定时器timer_，并释放内存。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>timer_</em>&nbsp;</td><td>调用add_micro_event创建定时器时返回的指针。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#3a1efee29bed0f09a436a25ea4b1e02e" title="添加一个微秒级定时器，该定时器的到期时间是tv，到期时回调的函数是func�...">add_micro_event</a>, <a class="el" href="timer_8h.html#1e98e5760d97bc21fd1cb7064c6aa2f8" title="删除传递给回调函数的第一个参数==owner的所有微秒级定时器，并释放内存。...">remove_micro_timers</a>, <a class="el" href="timer_8h.html#3a4c967556215f3f9d7a2ab84902abac" title="删除owner_指向的结构体中timer_list成员变量中的所有定时器（对应秒级定时器...">REMOVE_TIMERS</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="a8116d329233aa173cdc35f0490bc4fc"></a><!-- doxytag: member="timer.h::REMOVE_TIMER" ref="a8116d329233aa173cdc35f0490bc4fc" args="(timer_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REMOVE_TIMER          </td>
+          <td>(</td>
+          <td class="paramtype">timer_&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;do_remove_timer((timer_), 0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+删除秒级定时器timer_。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>timer_</em>&nbsp;</td><td>调用add_event创建定时器时返回的指针。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#782ebc354068eb04bdd25136a6592bed" title="添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数...">add_event</a>, <a class="el" href="timer_8h.html#9b54a072c598cc36d0b1553457ef500e" title="创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调�...">ADD_TIMER_EVENT</a>, <a class="el" href="timer_8h.html#8fb3bcd84dacaa79323b52a8414fbc33" title="删除链表head中所有的定时器，并释放内存。用于删除秒级定时器。...">remove_timers</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="3a4c967556215f3f9d7a2ab84902abac"></a><!-- doxytag: member="timer.h::REMOVE_TIMERS" ref="3a4c967556215f3f9d7a2ab84902abac" args="(owner_)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REMOVE_TIMERS          </td>
+          <td>(</td>
+          <td class="paramtype">owner_&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;remove_timers(&amp;((owner_)-&gt;timer_list)), remove_micro_timers((owner_))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+删除owner_指向的结构体中timer_list成员变量中的所有定时器（对应秒级定时器），并释放内存； 删除传递给回调函数的第一个参数==owner_的所有微秒级定时器，并释放内存。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>owner_</em>&nbsp;</td><td>指向一个结构体，并且该结构体里面必须有一个名为timer_list的list_head_t类型的成员变量。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#9b54a072c598cc36d0b1553457ef500e" title="创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调�...">ADD_TIMER_EVENT</a>, <a class="el" href="timer_8h.html#8fb3bcd84dacaa79323b52a8414fbc33" title="删除链表head中所有的定时器，并释放内存。用于删除秒级定时器。...">remove_timers</a>, <a class="el" href="timer_8h.html#3a1efee29bed0f09a436a25ea4b1e02e" title="添加一个微秒级定时器，该定时器的到期时间是tv，到期时回调的函数是func�...">add_micro_event</a>, <a class="el" href="timer_8h.html#1e98e5760d97bc21fd1cb7064c6aa2f8" title="删除传递给回调函数的第一个参数==owner的所有微秒级定时器，并释放内存。...">remove_micro_timers</a> </dd></dl>
+
+</div>
+</div><p>
+<hr><h2>枚举类型文档</h2>
+<a class="anchor" name="b106db46a600e93597080f6f649fdd80"></a><!-- doxytag: member="timer.h::timer_add_mode" ref="b106db46a600e93597080f6f649fdd80" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="timer_8h.html#b106db46a600e93597080f6f649fdd80">timer_add_mode</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+定时器添加模式。用于add_event函数。 
+<p>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#782ebc354068eb04bdd25136a6592bed" title="添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数...">add_event</a> </dd></dl>
+<dl compact><dt><b>枚举值: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="b106db46a600e93597080f6f649fdd802674d72f136fc80ce6f3abe09f5de3e7"></a><!-- doxytag: member="timer_add_new_timer" ref="b106db46a600e93597080f6f649fdd802674d72f136fc80ce6f3abe09f5de3e7" args="" -->timer_add_new_timer</em>&nbsp;</td><td>
+添加一个新的定时器。 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="b106db46a600e93597080f6f649fdd8042c17295c492d4dd4dcbabe3ed971568"></a><!-- doxytag: member="timer_replace_timer" ref="b106db46a600e93597080f6f649fdd8042c17295c492d4dd4dcbabe3ed971568" args="" -->timer_replace_timer</em>&nbsp;</td><td>
+替换一个定时器。如果找不到符合条件的定时器，则创建一个新的定时器。 </td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>函数文档</h2>
+<a class="anchor" name="782ebc354068eb04bdd25136a6592bed"></a><!-- doxytag: member="timer.h::add_event" ref="782ebc354068eb04bdd25136a6592bed" args="(list_head_t *head, timer_cb_func_t func, void *owner, void *data, time_t expire, timer_add_mode_t flag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtimer__struct.html">timer_struct_t</a>* add_event           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__head.html">list_head_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="timer_8h.html#83cd28f19c146eb2252e8fefc6956ba1">timer_cb_func_t</a>&nbsp;</td>
+          <td class="paramname"> <em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">time_t&nbsp;</td>
+          <td class="paramname"> <em>expire</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="timer_8h.html#5cdbee127eb0cd3f2557d361c94fa10e">timer_add_mode_t</a>&nbsp;</td>
+          <td class="paramname"> <em>flag</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数是func。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>head</em>&nbsp;</td><td>链头，新创建的定时器会被插入到该链表中。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>func</em>&nbsp;</td><td>定时器到期时调用的回调函数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>owner</em>&nbsp;</td><td>传递给回调函数的第一个参数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>传递给回调函数的第二个参数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>expire</em>&nbsp;</td><td>定时器到期时间（从Epoch开始的秒数）。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>flag</em>&nbsp;</td><td>指示add_event添加/替换定时器。如果flag==timer_replace_unconditionally， 那么add_event将在head链表中搜索出第一个回调函数==func的定时器， 然后把这个定时器的到期时间修改成expire。如果找不到符合条件的定时器，则新建一个定时器。 建议只有当head链表中所有定时器的回调函数都各不相同的情况下，才使用timer_replace_unconditionally。 注意：绝对不能在定时器的回调函数中修改该定时器的到期时间！ </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>指向新添加/替换的秒级定时器的指针。 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#9b54a072c598cc36d0b1553457ef500e" title="创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调�...">ADD_TIMER_EVENT</a>, <a class="el" href="timer_8h.html#a8116d329233aa173cdc35f0490bc4fc" title="删除秒级定时器timer_。">REMOVE_TIMER</a>, <a class="el" href="timer_8h.html#8fb3bcd84dacaa79323b52a8414fbc33" title="删除链表head中所有的定时器，并释放内存。用于删除秒级定时器。...">remove_timers</a>, <a class="el" href="timer_8h.html#3a4c967556215f3f9d7a2ab84902abac" title="删除owner_指向的结构体中timer_list成员变量中的所有定时器（对应秒级定时器...">REMOVE_TIMERS</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="3a1efee29bed0f09a436a25ea4b1e02e"></a><!-- doxytag: member="timer.h::add_micro_event" ref="3a1efee29bed0f09a436a25ea4b1e02e" args="(timer_cb_func_t func, const struct timeval *tv, void *owner, void *data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmicro__timer__struct.html">micro_timer_struct_t</a>* add_micro_event           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="timer_8h.html#83cd28f19c146eb2252e8fefc6956ba1">timer_cb_func_t</a>&nbsp;</td>
+          <td class="paramname"> <em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct timeval *&nbsp;</td>
+          <td class="paramname"> <em>tv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+添加一个微秒级定时器，该定时器的到期时间是tv，到期时回调的函数是func。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>func</em>&nbsp;</td><td>定时器到期时调用的回调函数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tv</em>&nbsp;</td><td>定时器到期时间。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>owner</em>&nbsp;</td><td>传递给回调函数的第一个参数。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>传递给回调函数的第二个参数。 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>指向新添加的微秒级定时器的指针。 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#0770a16670242e22010e8e426b043267" title="删除微秒级定时器timer_，并释放内存。">REMOVE_MICRO_TIMER</a>, <a class="el" href="timer_8h.html#1e98e5760d97bc21fd1cb7064c6aa2f8" title="删除传递给回调函数的第一个参数==owner的所有微秒级定时器，并释放内存。...">remove_micro_timers</a>, <a class="el" href="timer_8h.html#3a4c967556215f3f9d7a2ab84902abac" title="删除owner_指向的结构体中timer_list成员变量中的所有定时器（对应秒级定时器...">REMOVE_TIMERS</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="bac234633d2eeaf6c47f8ba2b108bb2a"></a><!-- doxytag: member="timer.h::destroy_timer" ref="bac234633d2eeaf6c47f8ba2b108bb2a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void destroy_timer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+销毁所有定时器（包括秒级和微秒级的定时器），并释放内存。 
+<p>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#4e7127f2f48fb1c538bbd67fe921c58c" title="初始化定时器功能。必须调用了这个函数，才能使用定时器功能。...">setup_timer</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f7c38ea3815c0fcdb6bcb6d42099f536"></a><!-- doxytag: member="timer.h::get_now_tm" ref="f7c38ea3815c0fcdb6bcb6d42099f536" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct tm* get_now_tm           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static, read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理客户端发过来的数据包的程序， 可以先调用一次renew_now，然后处理N个数据包，然后再调用一次renew_now，接着再处理N个数据包，如此反复。 这样在处理数据包的函数里就可以直接使用get_now_tm来获取不太精确的当前时间，从而能稍微提升程序的效率。 
+<p>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>不太精确的当前时间。 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#fc6f2ceaca31fa154d6b202b0b147d8f" title="更新当前时间。">renew_now</a>, <a class="el" href="timer_8h.html#8b2f3522af99a9b985f9038e6fe368a6" title="对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理...">get_now_tv</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8b2f3522af99a9b985f9038e6fe368a6"></a><!-- doxytag: member="timer.h::get_now_tv" ref="8b2f3522af99a9b985f9038e6fe368a6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct timeval* get_now_tv           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static, read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理客户端发过来的数据包的程序， 可以先调用一次renew_now，然后处理N个数据包，然后再调用一次renew_now，接着再处理N个数据包，如此反复。 这样在处理数据包的函数里就可以直接使用get_now_tv来获取不太精确的当前时间，从而能稍微提升程序的效率。 
+<p>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>不太精确的当前时间。 </dd></dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#fc6f2ceaca31fa154d6b202b0b147d8f" title="更新当前时间。">renew_now</a>, <a class="el" href="timer_8h.html#f7c38ea3815c0fcdb6bcb6d42099f536" title="对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理...">get_now_tm</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1bef9882bde91931b3355173ad84a12f"></a><!-- doxytag: member="timer.h::mod_expire_time" ref="1bef9882bde91931b3355173ad84a12f" args="(timer_struct_t *tmr, time_t exptm)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mod_expire_time           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtimer__struct.html">timer_struct_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>tmr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">time_t&nbsp;</td>
+          <td class="paramname"> <em>exptm</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+修改秒级定时器tmr的到期时间。注意：绝对不能在定时器的回调函数中修改该定时器的到期时间！ 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>tmr</em>&nbsp;</td><td>需要修改到期时间的定时器。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>exptm</em>&nbsp;</td><td>将tmr的到期时间修改成exptm（从Epoch开始的秒数）。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#782ebc354068eb04bdd25136a6592bed" title="添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数...">add_event</a>, <a class="el" href="timer_8h.html#9b54a072c598cc36d0b1553457ef500e" title="创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调�...">ADD_TIMER_EVENT</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="1e98e5760d97bc21fd1cb7064c6aa2f8"></a><!-- doxytag: member="timer.h::remove_micro_timers" ref="1e98e5760d97bc21fd1cb7064c6aa2f8" args="(void *owner)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void remove_micro_timers           </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>owner</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+删除传递给回调函数的第一个参数==owner的所有微秒级定时器，并释放内存。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>owner</em>&nbsp;</td><td>传递给回调函数的第一个参数。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#3a1efee29bed0f09a436a25ea4b1e02e" title="添加一个微秒级定时器，该定时器的到期时间是tv，到期时回调的函数是func�...">add_micro_event</a>, <a class="el" href="timer_8h.html#0770a16670242e22010e8e426b043267" title="删除微秒级定时器timer_，并释放内存。">REMOVE_MICRO_TIMER</a>, <a class="el" href="timer_8h.html#3a4c967556215f3f9d7a2ab84902abac" title="删除owner_指向的结构体中timer_list成员变量中的所有定时器（对应秒级定时器...">REMOVE_TIMERS</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8fb3bcd84dacaa79323b52a8414fbc33"></a><!-- doxytag: member="timer.h::remove_timers" ref="8fb3bcd84dacaa79323b52a8414fbc33" args="(list_head_t *head)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void remove_timers           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist__head.html">list_head_t</a> *&nbsp;</td>
+          <td class="paramname"> <em>head</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+删除链表head中所有的定时器，并释放内存。用于删除秒级定时器。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>head</em>&nbsp;</td><td>定时器链表的链头。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#782ebc354068eb04bdd25136a6592bed" title="添加/替换一个秒级定时器，该定时器的到期时间是expire，到期时回调的函数...">add_event</a>, <a class="el" href="timer_8h.html#9b54a072c598cc36d0b1553457ef500e" title="创建一个新的秒级定时器，该定时器的到期时间是exptm_，到期时调用的回调�...">ADD_TIMER_EVENT</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="fc6f2ceaca31fa154d6b202b0b147d8f"></a><!-- doxytag: member="timer.h::renew_now" ref="fc6f2ceaca31fa154d6b202b0b147d8f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void renew_now           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+更新当前时间。 
+<p>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#8b2f3522af99a9b985f9038e6fe368a6" title="对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理...">get_now_tv</a>, <a class="el" href="timer_8h.html#f7c38ea3815c0fcdb6bcb6d42099f536" title="对于对实时性要求不会太高的程序，比如摩尔庄园的Online Server这种循环处理...">get_now_tm</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="4e7127f2f48fb1c538bbd67fe921c58c"></a><!-- doxytag: member="timer.h::setup_timer" ref="4e7127f2f48fb1c538bbd67fe921c58c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup_timer           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+初始化定时器功能。必须调用了这个函数，才能使用定时器功能。 
+<p>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="timer_8h.html#bac234633d2eeaf6c47f8ba2b108bb2a" title="销毁所有定时器（包括秒级和微秒级的定时器），并释放内存。...">destroy_timer</a> </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

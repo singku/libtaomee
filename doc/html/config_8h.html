@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/conf_parser/config.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/conf_parser/config.h文件参考</h1>用于解析配置文件。配置文件的格式为：<br>
+ ============================================<br>
+ #key value | #号打头的行被视为注释 <br>
+ log_dir ./log <br>
+ log_size 32000000 <br>
+ ============================================ <a href="#_details">更多...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#78d826282d2d4aa99e9a396c13b3b4b7">config_init</a> (const char *file_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">解析配置文件file_name。成功返回后就可以调用config_get_inval或者config_get_strval 来获取配置文件的内容了。  <a href="#78d826282d2d4aa99e9a396c13b3b4b7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#1de43ee5b4d0fc4ef1eed552cd9b59d6">config_exit</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">清除解析配置文件时分配的内存。调用该函数后则再也不能使用config_get_inval或者config_get_strval 来获取配置文件的内容了，同时config_get_strval之前返回的所有指针都不能继续使用。  <a href="#1de43ee5b4d0fc4ef1eed552cd9b59d6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#02b4a328211dcfb26a8aede8a993ddfc">config_get_intval</a> (const char *key, int def)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取配置项key的整型值。如果找不到key，则返回值为def。如果key对应的值是非数字字符，则行为未定义。 故请小心校验配置文件和代码。  <a href="#02b4a328211dcfb26a8aede8a993ddfc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#6f6fdef085494cf6293195671f24e10b">config_get_strval</a> (const char *key)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">获取配置项key的字符创型的值。  <a href="#6f6fdef085494cf6293195671f24e10b"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+用于解析配置文件。配置文件的格式为：<br>
+ ============================================<br>
+ #key value | #号打头的行被视为注释 <br>
+ log_dir ./log <br>
+ log_size 32000000 <br>
+ ============================================ 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="1de43ee5b4d0fc4ef1eed552cd9b59d6"></a><!-- doxytag: member="config.h::config_exit" ref="1de43ee5b4d0fc4ef1eed552cd9b59d6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void config_exit           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+清除解析配置文件时分配的内存。调用该函数后则再也不能使用config_get_inval或者config_get_strval 来获取配置文件的内容了，同时config_get_strval之前返回的所有指针都不能继续使用。 
+<p>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="config_8h.html#02b4a328211dcfb26a8aede8a993ddfc" title="获取配置项key的整型值。如果找不到key，则返回值为def。如果key对应的值是�...">config_get_intval</a>, <a class="el" href="config_8h.html#6f6fdef085494cf6293195671f24e10b" title="获取配置项key的字符创型的值。">config_get_strval</a> </dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>void </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="02b4a328211dcfb26a8aede8a993ddfc"></a><!-- doxytag: member="config.h::config_get_intval" ref="02b4a328211dcfb26a8aede8a993ddfc" args="(const char *key, int def)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int config_get_intval           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>def</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+获取配置项key的整型值。如果找不到key，则返回值为def。如果key对应的值是非数字字符，则行为未定义。 故请小心校验配置文件和代码。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>配置项key。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>def</em>&nbsp;</td><td>如果配置文件中没有配置项key，则返回def。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="config_8h.html#6f6fdef085494cf6293195671f24e10b" title="获取配置项key的字符创型的值。">config_get_strval</a> </dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>配置项key对应的整型值，或者def。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="6f6fdef085494cf6293195671f24e10b"></a><!-- doxytag: member="config.h::config_get_strval" ref="6f6fdef085494cf6293195671f24e10b" args="(const char *key)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* config_get_strval           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>key</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+获取配置项key的字符创型的值。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>key</em>&nbsp;</td><td>配置项key。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="config_8h.html#02b4a328211dcfb26a8aede8a993ddfc" title="获取配置项key的整型值。如果找不到key，则返回值为def。如果key对应的值是�...">config_get_intval</a> </dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>配置项key对应的字符串型的型值。这个指针在调用config_exit之前一直都是有效可用的。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="78d826282d2d4aa99e9a396c13b3b4b7"></a><!-- doxytag: member="config.h::config_init" ref="78d826282d2d4aa99e9a396c13b3b4b7" args="(const char *file_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int config_init           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>file_name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+解析配置文件file_name。成功返回后就可以调用config_get_inval或者config_get_strval 来获取配置文件的内容了。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>file_name</em>&nbsp;</td><td>配置文件路径名。 </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>参见:</b></dt><dd><a class="el" href="config_8h.html#02b4a328211dcfb26a8aede8a993ddfc" title="获取配置项key的整型值。如果找不到key，则返回值为def。如果key对应的值是�...">config_get_intval</a>, <a class="el" href="config_8h.html#6f6fdef085494cf6293195671f24e10b" title="获取配置项key的字符创型的值。">config_get_strval</a> </dd></dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>成功则返回0，失败则返回-1。 </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:51 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

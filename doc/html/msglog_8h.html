@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/project/stat_agent/msglog.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/project/stat_agent/msglog.h文件参考</h1>用于写入统计信息 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+msglog.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="msglog_8h__incl.png" border="0" usemap="#libtaomee/project/stat_agent/msglog.h_map" alt=""></center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="msglog_8h.html#cae157ad4eeb342a2177a850d52de4a8">msglog</a> (const char *logfile, uint32_t type, uint32_t timestamp, const void *data, int len)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">写入统计信息  <a href="#cae157ad4eeb342a2177a850d52de4a8"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+用于写入统计信息 
+<p>
+=====================================================================================<p>
+Revision 3.0.0 Compiler gcc/g++ Company TaoMee.Inc, ShangHai. Copyright Copyright (c) 2009, TaoMee.Inc, ShangHai.<p>
+<dl class="author" compact><dt><b>作者:</b></dt><dd>taomee (淘米), <a href="mailto:taomee@taomee.com">taomee@taomee.com</a> This source code was wrote for TaoMee,Inc. ShangHai CN. ===================================================================================== </dd></dl>
+<hr><h2>函数文档</h2>
+<a class="anchor" name="cae157ad4eeb342a2177a850d52de4a8"></a><!-- doxytag: member="msglog.h::msglog" ref="cae157ad4eeb342a2177a850d52de4a8" args="(const char *logfile, uint32_t type, uint32_t timestamp, const void *data, int len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int msglog           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>logfile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&nbsp;</td>
+          <td class="paramname"> <em>timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>len</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+写入统计信息 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>logfile</em>&nbsp;</td><td>统计信息的写入路径 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>统计信息分类号，即msgid </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>timestamp</em>&nbsp;</td><td>统计信息产生时间，可用time(0)产生 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>具体的统计信息，以4个字节4个字节的形式储存 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>len</em>&nbsp;</td><td>data的长度，肯定是4的倍数 </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>0成功，-1失败 </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

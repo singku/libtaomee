@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: shm_cq结构参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>组合类型列表</span></a></li>
+      <li><a href="functions.html"><span>组合类型成员</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>shm_cq结构参考</h1><!-- doxytag: class="shm_cq" -->环形队列（Circular Queue）头节点  
+<a href="#_details">更多...</a>
+<p>
+
+<p>
+<a href="structshm__cq-members.html">所有成员的列表。</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>公有属性</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">volatile uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structshm__cq.html#60ed27b8ef5eaf4195d329ba2200f2b6">head</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">volatile uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structshm__cq.html#f22e4f661ebbcea4ec78b627e4a4e07c">tail</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structshm__cq.html#946bd1afb6bc4553c36867e0e809a2bc">shm_size</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint32_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structshm__cq.html#c061b8b50bc61aefc2015d5efbb46e64">elem_max_sz</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structshm__cq.html#5ec4c8bf8349857e7a546501f46694d1">name</a> [shmq_name_sz]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+环形队列（Circular Queue）头节点 <hr><h2>成员数据文档</h2>
+<a class="anchor" name="60ed27b8ef5eaf4195d329ba2200f2b6"></a><!-- doxytag: member="shm_cq::head" ref="60ed27b8ef5eaf4195d329ba2200f2b6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t <a class="el" href="structshm__cq.html#60ed27b8ef5eaf4195d329ba2200f2b6">shm_cq::head</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+队列头偏移量 
+</div>
+</div><p>
+<a class="anchor" name="f22e4f661ebbcea4ec78b627e4a4e07c"></a><!-- doxytag: member="shm_cq::tail" ref="f22e4f661ebbcea4ec78b627e4a4e07c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint32_t <a class="el" href="structshm__cq.html#f22e4f661ebbcea4ec78b627e4a4e07c">shm_cq::tail</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+队列尾偏移量 
+</div>
+</div><p>
+<a class="anchor" name="946bd1afb6bc4553c36867e0e809a2bc"></a><!-- doxytag: member="shm_cq::shm_size" ref="946bd1afb6bc4553c36867e0e809a2bc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="structshm__cq.html#946bd1afb6bc4553c36867e0e809a2bc">shm_cq::shm_size</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+为队列分配的共享内存总大小（byte） 
+</div>
+</div><p>
+<a class="anchor" name="c061b8b50bc61aefc2015d5efbb46e64"></a><!-- doxytag: member="shm_cq::elem_max_sz" ref="c061b8b50bc61aefc2015d5efbb46e64" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="structshm__cq.html#c061b8b50bc61aefc2015d5efbb46e64">shm_cq::elem_max_sz</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+队列中每个元素的最大大小（byte） 
+</div>
+</div><p>
+<a class="anchor" name="5ec4c8bf8349857e7a546501f46694d1"></a><!-- doxytag: member="shm_cq::name" ref="5ec4c8bf8349857e7a546501f46694d1" args="[shmq_name_sz]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="structshm__cq.html#5ec4c8bf8349857e7a546501f46694d1">shm_cq::name</a>[shmq_name_sz]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+共享内存名字 
+</div>
+</div><p>
+<hr>该结构的文档由以下文件生成：<ul>
+<li>libtaomee/interprocess/<a class="el" href="shmq_8h.html">shmq.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

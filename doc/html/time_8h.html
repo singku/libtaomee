@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/time/time.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/time/time.h文件参考</h1>和时间相关的函数。部分函数需要glib支持。 <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+time.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="time_8h__incl.png" border="0" usemap="#libtaomee/time/time.h_map" alt=""></center>
+</div>
+
+<p>
+<div class="dynheader">
+此图展示直接或间接包含该文件的文件：</div>
+<div class="dynsection">
+<p><center><img src="time_8h__dep__incl.png" border="0" usemap="#libtaomee/time/time.hdep_map" alt=""></center>
+<map name="libtaomee/time/time.hdep_map">
+<area shape="rect" href="dirtyword_8h.html" title="该模块提供了脏词检测的接口，包括读入脏词库，创建搜索结构，以及进行�..." alt="" coords="5,81,205,108"><area shape="rect" href="timer_8h.html" title="定时器函数，有秒级和毫秒级两种精度的接口。用于设定某一时刻调用某个�..." alt="" coords="229,81,349,108"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static time_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#b0c4fe08f535ab138fd97da498637e20">mk_integral_tm_hr</a> (struct tm tm_cur)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把`tm_cur`按小时取整点时间。比如`tm_cur`的时间是20081216-16:10:25，则返回的时间是20081216-16:00:00。  <a href="#b0c4fe08f535ab138fd97da498637e20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">time_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="time_8h.html#f3fec4d0a43b63a297bf5ecbfd4033ee">mk_integral_tm_day</a> (struct tm tm_cur, int mday, int month)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">把`tm_cur`按天取整点时间。需要glib支持。  <a href="#f3fec4d0a43b63a297bf5ecbfd4033ee"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+和时间相关的函数。部分函数需要glib支持。 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="f3fec4d0a43b63a297bf5ecbfd4033ee"></a><!-- doxytag: member="time.h::mk_integral_tm_day" ref="f3fec4d0a43b63a297bf5ecbfd4033ee" args="(struct tm tm_cur, int mday, int month)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">time_t mk_integral_tm_day           </td>
+          <td>(</td>
+          <td class="paramtype">struct tm&nbsp;</td>
+          <td class="paramname"> <em>tm_cur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>mday</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>month</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把`tm_cur`按天取整点时间。需要glib支持。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>struct</em>&nbsp;</td><td>tm tm_cur, 需要按天取整点的时间。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>mday, 对`mday`日按天取整点的时间。如果`tm_cur`为当前时间，并且要计算的是当天的按天整点时间， 可以填tm_cur.tm_mday。取值范围是1 -- 31。 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>month, 根据month的正负，计算`tm_cur` month个月后或者month个月之前，mday日的整点时间。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>time_t, 按天取整点后从Epoch开始的秒数。比如tm_cur是20081216-16:10:25，mday填15，month填1， 则返回的是20090115-00:00:00转换成从Epoch开始的秒数。 </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="b0c4fe08f535ab138fd97da498637e20"></a><!-- doxytag: member="time.h::mk_integral_tm_hr" ref="b0c4fe08f535ab138fd97da498637e20" args="(struct tm tm_cur)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static time_t mk_integral_tm_hr           </td>
+          <td>(</td>
+          <td class="paramtype">struct tm&nbsp;</td>
+          <td class="paramname"> <em>tm_cur</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+把`tm_cur`按小时取整点时间。比如`tm_cur`的时间是20081216-16:10:25，则返回的时间是20081216-16:00:00。 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>struct</em>&nbsp;</td><td>tm tm_cur, 需要按小时取整点的时间。</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>time_t, 按小时取整点后从Epoch开始的秒数。 </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

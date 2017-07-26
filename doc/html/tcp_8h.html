@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>LibTaomee: libtaomee/inet/tcp.h文件参考</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- 制作者 Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>libtaomee/inet/tcp.h文件参考</h1>Essential TCP socket interface <a href="#_details">更多...</a>
+<p>
+
+<p>
+<div class="dynheader">
+tcp.h包含/依赖关系图：</div>
+<div class="dynsection">
+<p><center><img src="tcp_8h__incl.png" border="0" usemap="#libtaomee/inet/tcp.h_map" alt=""></center>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#6f6f4121077b1544c23e50251979eb76">set_io_blockability</a> (int fd, int nonblock)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the given fd to be blocking or noblocking  <a href="#6f6f4121077b1544c23e50251979eb76"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#90e70628fb4d5cc0a5e3a27cf53f22ca">set_sock_snd_timeo</a> (int sockfd, int millisec)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set a timeout on sending data. If you want to disable timeout, just simply call this function again with millisec set to be 0.  <a href="#90e70628fb4d5cc0a5e3a27cf53f22ca"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#df74b4a418c54912091a84c8653c2b46">set_sock_rcv_timeo</a> (int sockfd, int millisec)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set a timeout on receiving data. If you want to disable timeout, just simply call this function again with millisec set to be 0.  <a href="#df74b4a418c54912091a84c8653c2b46"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#8b341e283bfff548a7e098d2b990aca3">safe_tcp_accept</a> (int sockfd, struct sockaddr_in *peer, int nonblock)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Accept a TCP connection  <a href="#8b341e283bfff548a7e098d2b990aca3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#123edbe23e37e94eac167f09af43f0a1">safe_tcp_connect</a> (const char *ipaddr, in_port_t port, int timeout, int nonblock)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a TCP connection  <a href="#123edbe23e37e94eac167f09af43f0a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#506bb588683df9adbca5770d4c39a45f">safe_socket_listen</a> (const char *ipaddr, in_port_t port, int type)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a listening socket fd  <a href="#506bb588683df9adbca5770d4c39a45f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#c0bfb757cec74e86e72cd5032130584d">safe_tcp_send_n</a> (int sockfd, const void *buf, int total)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Send `total` bytes of data to `sockfd`  <a href="#c0bfb757cec74e86e72cd5032130584d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#260480dea3a158c84970e56ab343c8c8">safe_tcp_recv</a> (int sockfd, void *buf, int bufsize)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Receive data from `sockfd`  <a href="#260480dea3a158c84970e56ab343c8c8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="tcp_8h.html#898f61f4e82e5a79771597b09b0725d7">safe_tcp_recv_n</a> (int sockfd, void *buf, int total)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Receive `total` bytes of data from `sockfd`  <a href="#898f61f4e82e5a79771597b09b0725d7"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>详细描述</h2>
+Essential TCP socket interface 
+<p>
+============================================================<p>
+compiler gcc4.1.2 platform Linux<p>
+copyright: TaoMee, Inc. ShangHai CN. All rights reserved.<p>
+============================================================ <hr><h2>函数文档</h2>
+<a class="anchor" name="506bb588683df9adbca5770d4c39a45f"></a><!-- doxytag: member="tcp.h::safe_socket_listen" ref="506bb588683df9adbca5770d4c39a45f" args="(const char *ipaddr, in_port_t port, int type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int safe_socket_listen           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>ipaddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">in_port_t&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>type</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Create a listening socket fd 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>char* ipaddr, the binding ip address. If this argument is assigned with 0, then INADDR_ANY will be used as the binding address. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>in_port_t</em>&nbsp;</td><td>port, the binding port. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>type, type of socket (SOCK_STREAM, SOCK_DGRAM, SOCK_SEQPACKET, SOCK_RAW).</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, the newly created listening fd on success, -1 on error. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8b341e283bfff548a7e098d2b990aca3"></a><!-- doxytag: member="tcp.h::safe_tcp_accept" ref="8b341e283bfff548a7e098d2b990aca3" args="(int sockfd, struct sockaddr_in *peer, int nonblock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int safe_tcp_accept           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct sockaddr_in *&nbsp;</td>
+          <td class="paramname"> <em>peer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nonblock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Accept a TCP connection 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>sockfd, the listening fd. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>struct</em>&nbsp;</td><td>sockaddr_in* peer, used to return the protocol address of the connected peer process. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>nonblock, 0 and the accepted fd will be set blocking, 1 and the fd will be set nonblocking.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, the accpected fd on success, -1 on error. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="123edbe23e37e94eac167f09af43f0a1"></a><!-- doxytag: member="tcp.h::safe_tcp_connect" ref="123edbe23e37e94eac167f09af43f0a1" args="(const char *ipaddr, in_port_t port, int timeout, int nonblock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int safe_tcp_connect           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>ipaddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">in_port_t&nbsp;</td>
+          <td class="paramname"> <em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nonblock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Create a TCP connection 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>char* ipaddr, the ip address to connect to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>in_port_t</em>&nbsp;</td><td>port, the port to connect to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>timeout, abort the connecting attempt after timeout secs. If timeout is less than or equal to 0, then the connecting attempt will not be interrupted until error occurs. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>nonblock, 0 and the connected fd will be set blocking, 1 and the fd will be set nonblocking.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, the connected fd on success, -1 on error. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="260480dea3a158c84970e56ab343c8c8"></a><!-- doxytag: member="tcp.h::safe_tcp_recv" ref="260480dea3a158c84970e56ab343c8c8" args="(int sockfd, void *buf, int bufsize)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int safe_tcp_recv           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>bufsize</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Receive data from `sockfd` 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>sockfd, socket fd to receive data from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* buf, buffer to hold the receiving data. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>bufsize, size of `buf`.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, number of bytes receive on success, -1 on error, 0 on connection closed by peer. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="898f61f4e82e5a79771597b09b0725d7"></a><!-- doxytag: member="tcp.h::safe_tcp_recv_n" ref="898f61f4e82e5a79771597b09b0725d7" args="(int sockfd, void *buf, int total)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int safe_tcp_recv_n           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>total</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Receive `total` bytes of data from `sockfd` 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>sockfd, socket fd to receive data from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* buf, buffer to hold the receiving data. Size of `buf` should be no less than `total` </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>total, number of bytes to receive.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, number of bytes receive on success, -1 on error, 0 on connection closed by peer. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="c0bfb757cec74e86e72cd5032130584d"></a><!-- doxytag: member="tcp.h::safe_tcp_send_n" ref="c0bfb757cec74e86e72cd5032130584d" args="(int sockfd, const void *buf, int total)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int safe_tcp_send_n           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>total</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Send `total` bytes of data to `sockfd` 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>sockfd, socket fd to send data to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>const</em>&nbsp;</td><td>void* buf, data to be sent. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>int</em>&nbsp;</td><td>total, number of bytes in total to be sent.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>int, number of bytes sent on success, -1 on error. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="6f6f4121077b1544c23e50251979eb76"></a><!-- doxytag: member="tcp.h::set_io_blockability" ref="6f6f4121077b1544c23e50251979eb76" args="(int fd, int nonblock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int set_io_blockability           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>nonblock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set the given fd to be blocking or noblocking 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fd</em>&nbsp;</td><td>file descriptor to be set. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nonblock</em>&nbsp;</td><td>0 to set the given fd blocking, 1 to set the fd nonblocking.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>0 on success, -1 on error. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="df74b4a418c54912091a84c8653c2b46"></a><!-- doxytag: member="tcp.h::set_sock_rcv_timeo" ref="df74b4a418c54912091a84c8653c2b46" args="(int sockfd, int millisec)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int set_sock_rcv_timeo           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>millisec</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set a timeout on receiving data. If you want to disable timeout, just simply call this function again with millisec set to be 0. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>socket descriptor to be set. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>millisec</em>&nbsp;</td><td>timeout in milliseconds.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>0 on success, -1 on error and errno is set appropriately. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="90e70628fb4d5cc0a5e3a27cf53f22ca"></a><!-- doxytag: member="tcp.h::set_sock_snd_timeo" ref="90e70628fb4d5cc0a5e3a27cf53f22ca" args="(int sockfd, int millisec)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int set_sock_snd_timeo           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>millisec</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Set a timeout on sending data. If you want to disable timeout, just simply call this function again with millisec set to be 0. 
+<p>
+<dl compact><dt><b>参数:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sockfd</em>&nbsp;</td><td>socket descriptor to be set. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>millisec</em>&nbsp;</td><td>timeout in milliseconds.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>返回:</b></dt><dd>0 on success, -1 on error and errno is set appropriately. </dd></dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated at Thu Nov 26 17:06:52 2009 for LibTaomee by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>
